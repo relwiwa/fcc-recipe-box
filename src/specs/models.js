@@ -18,3 +18,10 @@ export class Recipe {
     this.image = image;
   }
 }
+
+export class Numerus {
+  constructor(singular, plural) {
+    this.singular = singular;
+    this.plural = plural;
+  }
+}

@@ -1,3 +1,5 @@
+import { Numerus } from './models';
+
 export const recipeCategories = {
   dessert: 'dessert',
   mainDish: 'mainDish',
@@ -6,7 +8,7 @@ export const recipeCategories = {
 };
 
 export const units = {
-  piece: 'piece',
-  gram: 'gram',
-  liter: 'liter',
+  piece: new Numerus('piece', 'pieces'),
+  gram: new Numerus('gram', 'grams'),
+  liter: new Numerus('liter', 'liters'),
 };

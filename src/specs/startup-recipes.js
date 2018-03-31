@@ -11,8 +11,8 @@ export const startupRecipes = {
     salad,
     'A simple mixed salad that will make you happy',
     [
-      new Ingredient('1', piece, 'lettuce'),
-      new Ingredient('2', piece, 'carrots'),
+      new Ingredient('1', piece.singular, 'lettuce'),
+      new Ingredient('2', piece.plural, 'carrots'),
     ],
     [
       'This is the first step',
@@ -26,8 +26,8 @@ export const startupRecipes = {
     salad,
     'Another simple mixed salad that will make you happy',
     [
-      new Ingredient('1', piece, 'lettuce'),
-      new Ingredient('2', piece, 'carrots'),
+      new Ingredient('1', piece.singular, 'lettuce'),
+      new Ingredient('2', piece.plural, 'carrots'),
     ],
     [
       'This is the first step',
