@@ -20,7 +20,7 @@ export const startupRecipes = {
     ],
     'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2004/1/23/1/ss1d27_mixed_green_salad.jpg.rend.hgtvcom.616.462.suffix/1386276604828.jpeg',
   ),
-  'decdefgh-id': new Recipe(
+  'deabcdefgh-id': new Recipe(
     'deabcdefgh-id',
     'Another Simple Mixed Salad',
     salad.plural,
@@ -28,10 +28,12 @@ export const startupRecipes = {
     [
       new Ingredient('1', piece.singular, 'lettuce'),
       new Ingredient('2', piece.plural, 'carrots'),
+      new Ingredient('5', piece.plural, 'pumpkins'),
     ],
     [
       'This is the first step',
-      'This is the second step',
+      'This is the second step This is the second step This is the second step This is the second step This is the second step This is the second step',
+      'This is the third step',
     ],
     'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2004/1/23/1/ss1d27_mixed_green_salad.jpg.rend.hgtvcom.616.462.suffix/1386276604828.jpeg'
   ),

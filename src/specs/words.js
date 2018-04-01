@@ -10,7 +10,7 @@ export const recipeCategories = {
 };
 
 export const units = {
-  piece: new Numerus('piece', 'pieces'),
+  piece: new Numerus('piece of', 'pieces of'),
   gram: new Numerus('gram', 'grams'),
   liter: new Numerus('liter', 'liters'),
 };

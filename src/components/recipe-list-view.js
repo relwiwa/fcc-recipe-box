@@ -7,7 +7,7 @@ import RecipeListItem from './recipe-list-item';
 
 import { filterDescription } from '../specs/words';
 
-const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], recipes = {}, updateCategoryFilters = (() => {}) }) => {
+const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], recipes = {}, updateCategoryFilters = (() => {}), updateCurrentRecipe = (() => {}) }) => {
 
   const renderRecipeListControls = () => {
     return <RecipeListControls
@@ -27,8 +27,10 @@ const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], re
             return <RecipeListItem
               key={recipes[key].id}
               description={recipes[key].description}
+              id={recipes[key].id}
               image={recipes[key].image}
               title={recipes[key].recipeTitle}
+              updateCurrentRecipe={updateCurrentRecipe}
             />
           }
         })}
@@ -43,6 +45,7 @@ RecipeListView.propTypes = {
   recipeCategories: PropTypes.array.isRequired,
   recipes: PropTypes.object.isRequired,
   updateCategoryFilters: PropTypes.func.isRequired,
+  updateCurrentRecipe: PropTypes.func.isRequired,
 };
 
 export default RecipeListView;
