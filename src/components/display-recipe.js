@@ -12,7 +12,11 @@ const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
         <div className="grid-x grid-margin-y grid-margin-x align-middle">
           <div className="cell medium-6 medium-order-2">{description}</div>
           <div className="cell medium-6 medium-order-1">
-            <img src={image} title={'Image of ' + recipeTitle} alt={'Image of ' + recipeTitle} style={{borderRadius: '100%', boxShadow: '0px 0px 10px'}} />
+            <div className="grid-x">
+              <div className="cell small-8 medium-10">
+                <img src={image} title={'Image of ' + recipeTitle} alt={'Image of ' + recipeTitle} style={{borderRadius: '100%', boxShadow: '0px 0px 10px'}} />
+              </div>
+            </div>
           </div>      
         </div>
         <hr />

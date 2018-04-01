@@ -23,7 +23,7 @@ class RecipeBox extends Component {
   componentDidMount() {
     this.setState({
       allRecipes: startupRecipes,
-      currentRecipe: 'deabcdefgh-id',
+//      currentRecipe: 'deabcdefgh-id',
     });
   }
 

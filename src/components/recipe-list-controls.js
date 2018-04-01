@@ -15,7 +15,7 @@ const RecipeListControls = ({ currentCategoryFilters = [], filterDescription = '
         />
       </div>
       <div className="cell small-4 button-group expanded">
-        <a className="button success">Add Recipe</a>
+        <a className="button warning">Add Recipe</a>
       </div>
     </div>
   );
