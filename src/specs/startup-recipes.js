@@ -8,7 +8,7 @@ export const startupRecipes = {
   'abcdefgh-id': new Recipe(
     'abcdefgh-id',
     'Simple Mixed Salad',
-    salad,
+    salad.plural,
     'A simple mixed salad that will make you happy',
     [
       new Ingredient('1', piece.singular, 'lettuce'),
@@ -23,7 +23,7 @@ export const startupRecipes = {
   'decdefgh-id': new Recipe(
     'deabcdefgh-id',
     'Another Simple Mixed Salad',
-    salad,
+    salad.plural,
     'Another simple mixed salad that will make you happy',
     [
       new Ingredient('1', piece.singular, 'lettuce'),
