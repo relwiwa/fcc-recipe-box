@@ -6,14 +6,14 @@ const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
 
   return (
     <div className="display-recipe grid-x grid-margin-y align-center">
-      <div className="cell callout primary large-10 text-center" style={{background: '#1779ba', color: '#d7ecfa'}}>
+      <div className="cell callout primary text-center" style={{background: '#1779ba', color: '#d7ecfa'}}>
         <h1>{recipeTitle}</h1>
         <hr />
-        <div className="grid-x grid-margin-y grid-margin-x align-middle">
-          <div className="cell medium-6 medium-order-2">{description}</div>
-          <div className="cell medium-6 medium-order-1">
+        <div className="grid-x grid-margin-y grid-margin-x align-middle align-center">
+          <div className="cell medium-6 medium-order-2 large-7">{description}</div>
+          <div className="cell medium-6 medium-order-1 large-5">
             <div className="grid-x">
-              <div className="cell small-8 medium-10">
+              <div className="cell small-8 medium-10 large-12">
                 <img src={image} title={'Image of ' + recipeTitle} alt={'Image of ' + recipeTitle} style={{borderRadius: '100%', boxShadow: '0px 0px 10px'}} />
               </div>
             </div>
@@ -43,7 +43,7 @@ const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
           </div>
         </div>
       </div>
-      <div className="cell large-10">
+      <div className="cell small-11">
         <div className="button-group align-right">
           <a
             className="button secondary"
