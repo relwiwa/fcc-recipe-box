@@ -1,27 +1,27 @@
 
 export class Ingredient {
   constructor(quantity, unit, description) {
+    this.description = description;  
     this.quantity = quantity;
     this.unit = unit;
-    this.description = description;  
   }
 }
 
 export class Recipe {
-  constructor(id, recipeTitle, category, description, ingredients, steps, image) {
-    this.id = id;
+  constructor(recipeId, recipeTitle, recipeCategory, recipeDescription, recipeIngredients, recipeSteps, recipeImage) {
+    this.recipeCategory = recipeCategory;
+    this.recipeDescription = recipeDescription;
+    this.recipeId = recipeId;
+    this.recipeImage = recipeImage;
+    this.recipeIngredients = recipeIngredients;
+    this.recipeSteps = recipeSteps;
     this.recipeTitle = recipeTitle;
-    this.category = category;
-    this.description = description;
-    this.ingredients = ingredients;
-    this.steps = steps;
-    this.image = image;
   }
 }
 
 export class Numerus {
   constructor(singular, plural) {
-    this.singular = singular;
     this.plural = plural;
+    this.singular = singular;
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
-  const { description, image, ingredients, recipeTitle, steps } = recipe;
+  const { recipeDescription, recipeImage, recipeIngredients, recipeTitle, recipeSteps } = recipe;
 
   return (
     <div className="display-recipe grid-x grid-margin-y align-center">
@@ -10,11 +10,11 @@ const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
         <h1>{recipeTitle}</h1>
         <hr />
         <div className="grid-x grid-margin-y grid-margin-x align-middle align-center">
-          <div className="cell medium-6 medium-order-2 large-7">{description}</div>
+          <div className="cell medium-6 medium-order-2 large-7">{recipeDescription}</div>
           <div className="cell medium-6 medium-order-1 large-5">
             <div className="grid-x">
               <div className="cell small-8 medium-10 large-12">
-                <img src={image} title={'Image of ' + recipeTitle} alt={'Image of ' + recipeTitle} style={{borderRadius: '100%', boxShadow: '0px 0px 10px'}} />
+                <img src={recipeImage} title={'Image of ' + recipeTitle} alt={'Image of ' + recipeTitle} style={{borderRadius: '100%', boxShadow: '0px 0px 10px'}} />
               </div>
             </div>
           </div>      
@@ -22,7 +22,7 @@ const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
         <hr />
         <div className="grid-x grid-margin-x grid-margin-y">
           <h2 className="cell"><span className="fa fa-shopping-bag"></span> Ingredients <span className="fa fa-shopping-bag"></span></h2>
-          {ingredients.map((ingredient, index) => (
+          {recipeIngredients.map((ingredient, index) => (
             <div key={index} className="callout primary cell small-6 medium-4">
               {ingredient.quantity} {ingredient.unit} {ingredient.description}
             </div>
@@ -33,7 +33,7 @@ const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
           <h2 className="cell"><span className="fa fa-cogs"></span> Preparation <span className="fa fa-cogs"></span></h2>
           <div className="cell">
             <div className="grid-x grid-margin-x grid-margin-y">
-              {steps.map((step, index) => (
+              {recipeSteps.map((step, index) => (
                 <div key={index} className="cell medium-6 large-4 callout primary">
                   <h4>Step {index + 1}</h4>
                   <p>{step}</p>

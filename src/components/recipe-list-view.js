@@ -25,10 +25,10 @@ const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], re
         {Object.keys(recipes).map(key => {
           if (currentCategoryFilters.indexOf(recipes[key].category) < 0) {
             return <RecipeListItem
-              key={recipes[key].id}
-              description={recipes[key].description}
-              id={recipes[key].id}
-              image={recipes[key].image}
+              key={recipes[key].recipeId}
+              description={recipes[key].recipeDescription}
+              id={recipes[key].recipeId}
+              image={recipes[key].recipeImage}
               title={recipes[key].recipeTitle}
               updateCurrentRecipe={updateCurrentRecipe}
             />
