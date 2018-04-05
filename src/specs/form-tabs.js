@@ -46,8 +46,8 @@ formTabElementSpecs[recipeCategory] = new FormTabElement(
   true,
   'Chose One Recipe Category',
   FormRadioInput,
-  (() => {
-    return true;
+  ((elementContent) => {
+    return (elementContent !== null) ? true: false;
   }),
 );
 
