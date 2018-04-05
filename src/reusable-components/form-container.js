@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FormContainer = (props) => {
+const FormContainer = ({ formElements }) => {
   let allValid = true;
-  props.children.map(child => {
-    if (child.props.valid === false) {
+  formElements.map(formElement => {
+    if (formElement.props.valid === false) {
       allValid = false;
     }
   });
 
   return (
     <form className="form-container">
-      {props.children}
+      {formElements}
       {allValid && <div>
         <a className="button">All Good</a>
       </div>}
@@ -20,7 +20,7 @@ const FormContainer = (props) => {
 }
 
 FormContainer.propTypes = {
-
+  formElements: PropTypes.array.isRequired,
 };
 
 export default FormContainer;

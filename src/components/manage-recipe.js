@@ -48,8 +48,8 @@ class ManageRecipe extends Component {
 
     return (
       <div className="manage-recipe">
-        <FormContainer>
-          {formTabElementOrder[currentTab].map(formTabElement => {
+        <FormContainer
+          formElements={formTabElementOrder[currentTab].map(formTabElement => {
             const props = formTabElementSpecs[formTabElement];
             const FormElementType = formTabElementSpecs[formTabElement].type;
             return <FormElementType
@@ -60,7 +60,7 @@ class ManageRecipe extends Component {
               valid={formTabs[currentTab][formTabElement].valid}
             />;
           })}
-        </FormContainer>
+        />
       </div>
     );
   }
