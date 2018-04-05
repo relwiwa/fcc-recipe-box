@@ -6,7 +6,7 @@ import FormElementRequirement from './form-element-requirement';
 const FormElement = ({ children, label, requirement, valid }) => {
   return (
     <div className="form-element">
-      <label>
+      <label style={{fontSize: '16px'}}>
         {label}
         {children}
       </label>
@@ -16,7 +16,7 @@ const FormElement = ({ children, label, requirement, valid }) => {
       />
     </div>    
   );
-}
+};
 
 FormElement.propTypes = {
   children: PropTypes.object.isRequired,
