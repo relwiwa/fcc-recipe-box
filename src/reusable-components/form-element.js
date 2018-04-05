@@ -1,25 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FormElement = ({ children, label, requirement, valid }) => {
-  const renderValidIcon = (validProperty) => {
-    if (validProperty === null) {
-      return null
-    }
-    else {
-      return 'fa ' + (valid === true ? 'fa-check-square-o' : 'fa-square-o');
-    }
-  };
+import FormElementRequirement from './form-element-requirement';
 
+const FormElement = ({ children, label, requirement, valid }) => {
   return (
     <div className="form-element">
       <label>
         {label}
         {children}
       </label>
-      <p className="help-text"><span className={'fa ' + renderValidIcon(valid)}></span> {requirement}</p>
-    </div>
-    
+      <FormElementRequirement
+        requirement={requirement}
+        valid={valid}
+      />
+    </div>    
   );
 }
 

@@ -1,14 +1,16 @@
+import FormRadioInput from '../reusable-components/form-radio-input';
 import FormTextInput from '../reusable-components/form-text-input';
 import FormTextarea from '../reusable-components/form-text-input';
 
 import { FormTabElement } from './models';
-import { manageRecipeTabTitles, recipeProperties } from './words';
+import { manageRecipeTabTitles, recipeCategories, recipeProperties } from './words';
 
-const { recipeDescription, recipeImage, recipeTitle } = recipeProperties;
+const { dessert, mainDish, salad, starter } = recipeCategories;
+const { recipeCategory, recipeDescription, recipeImage, recipeTitle } = recipeProperties;
 const { general, ingredients, preparation } = manageRecipeTabTitles;
 
 const formTabElementOrder = {};
-formTabElementOrder[general] = [recipeTitle, recipeDescription, recipeImage];
+formTabElementOrder[general] = [recipeTitle, recipeDescription, recipeCategory, recipeImage];
 formTabElementOrder[ingredients] = [];
 formTabElementOrder[preparation] = [];
 
@@ -34,6 +36,18 @@ formTabElementSpecs[recipeDescription] = new FormTabElement(
   FormTextarea,
   ((elementContent) => {
     return ((elementContent.length >= 50 && elementContent.length <= 250) ? true : false);
+  }),
+);
+
+formTabElementSpecs[recipeCategory] = new FormTabElement(
+  'Chose A Category For Your Recipe',
+  [starter.singular, mainDish.singular, salad.singular, dessert.singular],
+  null,
+  true,
+  'Chose One Recipe Category',
+  FormRadioInput,
+  (() => {
+    return true;
   }),
 );
 

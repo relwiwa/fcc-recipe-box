@@ -11,7 +11,7 @@ const FormTextarea = ({ label, placeholder, requirement, updateValue, valid, val
       valid={valid}
     >
       <textarea
-        onChange={updateValue}
+        onChange={(event) => updateValue(event.target.value)}
         placeholder={placeholder}
         type="textarea"
         value={value}

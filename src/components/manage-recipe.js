@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import FormContainer from '../reusable-components/form-container';
+import FormRadioInput from '../reusable-components/form-radio-input';
 import FormTextarea from '../reusable-components/form-textarea';
 import FormTextInput from '../reusable-components/form-text-input';
 
@@ -54,7 +55,7 @@ class ManageRecipe extends Component {
             return <FormElementType
               key={formTabElement}
               {...props}
-              updateValue={(event) => this.updateValue(formTabElement, event.target.value)}
+              updateValue={(valueToUpdate) => this.updateValue(formTabElement, valueToUpdate)}
               value={formTabs[currentTab][formTabElement].value}
               valid={formTabs[currentTab][formTabElement].valid}
             />;

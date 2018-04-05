@@ -11,7 +11,7 @@ const FormTextInput = ({ label, placeholder, requirement, updateValue, valid, va
       valid={valid}
     >
       <input
-        onChange={updateValue}
+        onChange={(event) => updateValue(event.target.value)}
         placeholder={placeholder}
         type="text"
         value={value}        

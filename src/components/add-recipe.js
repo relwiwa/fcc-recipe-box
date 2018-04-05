@@ -8,7 +8,7 @@ const AddRecipe = ({ addRecipe }) => {
   return (
     <div className="add-recipe">
       <ManageRecipe
-        recipe={new Recipe(null, '', null, '', [], [], '')}
+        recipe={new Recipe(null, '', '', '', [], [], '')}
         saveRecipe={addRecipe}
       />
     </div>
