@@ -24,7 +24,7 @@ const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], re
       {renderRecipeListControls()}
       <RecipeList>
         {Object.keys(recipes).map(key => {
-          if (currentCategoryFilters.indexOf(recipes[key].category) < 0) {
+          if (currentCategoryFilters.indexOf(recipes[key].recipeCategory) < 0) {
             return <RecipeListItem
               key={recipes[key].recipeId}
               description={recipes[key].recipeDescription}

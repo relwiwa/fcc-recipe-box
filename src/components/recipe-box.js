@@ -31,7 +31,7 @@ class RecipeBox extends Component {
     this.setState({
       allRecipes: startupRecipes,
 //      currentRecipe: 'deabcdefgh-id',
-      mode: addRecipe,
+//      mode: addRecipe,
     });
   }
 
@@ -45,12 +45,13 @@ class RecipeBox extends Component {
   updateCategoryFilters(category) {
     const { currentCategoryFilters } = this.state;
     let categoryWasFiltered = false;
-    const newCategoryFilters = currentCategoryFilters.map(currentCategoryFilter => {
+    let newCategoryFilters = [];
+    currentCategoryFilters.map((currentCategoryFilter, index) => {
       if (category === currentCategoryFilter) {
         categoryWasFiltered = true;
       }
       else {
-        return currentCategoryFilter;
+        newCategoryFilters.push(currentCategoryFilter);
       }
     });
     if (categoryWasFiltered === false) {
