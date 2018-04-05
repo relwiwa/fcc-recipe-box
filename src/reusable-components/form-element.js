@@ -22,6 +22,7 @@ FormElement.propTypes = {
   children: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   requirement: PropTypes.string.isRequired,
+  valid: PropTypes.oneOf([true, false, null]),  
 };
 
 export default FormElement;

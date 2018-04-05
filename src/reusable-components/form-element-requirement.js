@@ -18,6 +18,7 @@ const FormElementRequirement = ({ requirement, valid }) => {
 
 FormElementRequirement.propTypes = {
   requirement: PropTypes.string.isRequired,
+  valid: PropTypes.oneOf([true, false, null]),  
 };
 
 export default FormElementRequirement;
