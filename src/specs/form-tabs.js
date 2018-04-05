@@ -41,7 +41,7 @@ formTabElementSpecs[recipeDescription] = new FormTabElement(
 
 formTabElementSpecs[recipeCategory] = new FormTabElement(
   'Chose A Category For Your Recipe',
-  [starter.singular, mainDish.singular, salad.singular, dessert.singular],
+  [starter.plural, mainDish.plural, salad.plural, dessert.plural],
   null,
   true,
   'Chose One Recipe Category',
