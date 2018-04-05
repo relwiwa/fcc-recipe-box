@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
+const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurrentRecipe = (() => {}) }) => {
   const { recipeDescription, recipeImage, recipeIngredients, recipeTitle, recipeSteps } = recipe;
 
   return (
@@ -47,6 +47,7 @@ const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
         <div className="button-group align-right">
           <a
             className="button secondary"
+            onClick={editCurrentRecipe}
           >
             Edit
           </a>
@@ -63,6 +64,7 @@ const DisplayRecipe = ({ recipe = {}, resetCurrentRecipe = (() => {}) }) => {
 };
 
 DisplayRecipe.propTypes = {
+  editCurrentRecipe: PropTypes.func.isRequired,
   recipe: PropTypes.object.isRequired,
   resetCurrentRecipe: PropTypes.func.isRequired,
 };
