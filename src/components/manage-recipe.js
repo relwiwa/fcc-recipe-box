@@ -6,26 +6,32 @@ import FormRadioInput from '../reusable-components/form-radio-input';
 import FormTextarea from '../reusable-components/form-textarea';
 import FormTextInput from '../reusable-components/form-text-input';
 
-import { manageRecipeTabTitles, recipeProperties } from '../specs/words';
-import { formTabElementOrder, formTabElementSpecs, formTabOrder } from '../specs/form-tabs';
-
-const { general, ingredients, preparation } = manageRecipeTabTitles;
-const { recipeDescription, recipeImage, recipeTitle } = recipeProperties;
+import { recipeProperties } from '../specs/words';
+import { formTabElementOrder, formTabElementSpecs, formTabSpecs } from '../specs/form-tabs';
 
 class ManageRecipe extends Component {
   constructor(props) {
     super(props);
     const formTabs = {};
-    formTabOrder.map(formTab => {
-      formTabs[formTab] = {};
-      formTabElementOrder[formTab].map(formTabElement => {
-        formTabs[formTab][formTabElement] = {};
-        formTabs[formTab][formTabElement].value = props.recipe[formTabElement];
-        formTabs[formTab][formTabElement].valid = formTabElementSpecs[formTabElement].required === true ? false : null;
+    formTabSpecs.map(formTab => {
+      const { title } = formTab;
+      formTabs[title] = {
+        elements: {},
+      };
+      let tabValid = true;
+      formTabElementOrder[title].map(formTabElement => {
+        formTabs[title].elements[formTabElement] = {};
+        formTabs[title].elements[formTabElement].value = props.recipe[formTabElement];
+        const tabElementValid = formTabElementSpecs[formTabElement].validation(props.recipe[formTabElement]);
+        formTabs[title].elements[formTabElement].valid = tabElementValid;
+        if (tabElementValid === false) {
+          tabValid = false;
+        }
       });
+      formTabs[title].valid = tabValid;
     });
     this.state = {
-      currentTab: general,
+      currentTab: formTabSpecs[0].title,
       formTabs: formTabs,
     };
 
@@ -35,20 +41,28 @@ class ManageRecipe extends Component {
   updateValue(formElement, newValue) {
     const { currentTab, formTabs } = this.state;
     const newFormTabs = {...formTabs};
-    newFormTabs[currentTab][formElement].value = newValue;
-    newFormTabs[currentTab][formElement].valid = formTabElementSpecs[formElement].validation(newValue);
+    newFormTabs[currentTab].elements[formElement].value = newValue;
+    newFormTabs[currentTab].elements[formElement].valid = formTabElementSpecs[formElement].validation(newValue);
+    let currentTabValid = true;
+    formTabElementOrder[currentTab].map(element => {
+      if (newFormTabs[currentTab].elements[element].valid === false) {
+        currentTabValid = false;
+      }
+    });
+    newFormTabs[currentTab].valid = currentTabValid;
     this.setState({
       formTabs: newFormTabs,
     });
   }    
   
   render() {
-    const { cancelManageRecipe } = this.props;
+    const { saveRecipe } = this.props;
     const { currentTab, formTabs } = this.state;
 
     return (
       <div className="manage-recipe">
         <FormContainer
+          currentTab={currentTab}
           formElements={formTabElementOrder[currentTab].map(formTabElement => {
             const props = formTabElementSpecs[formTabElement];
             const FormElementType = formTabElementSpecs[formTabElement].type;
@@ -56,10 +70,17 @@ class ManageRecipe extends Component {
               key={formTabElement}
               {...props}
               updateValue={(valueToUpdate) => this.updateValue(formTabElement, valueToUpdate)}
-              value={formTabs[currentTab][formTabElement].value}
-              valid={formTabs[currentTab][formTabElement].valid}
+              value={formTabs[currentTab].elements[formTabElement].value}
+              valid={formTabs[currentTab].elements[formTabElement].valid}
             />;
           })}
+          formTabSpecs={formTabSpecs.map(formTabSpec => {
+            const props={...formTabSpec};
+            props.valid = formTabs[formTabSpec.title].valid
+            return props;
+          })}
+          saveFormInput={saveRecipe}
+          updateCurrentTab={(tab) => this.setState({ currentTab: tab })}
         />
       </div>
     );

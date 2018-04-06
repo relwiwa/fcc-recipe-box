@@ -33,7 +33,7 @@ FormRadioInput.propTypes = {
   requirement: PropTypes.string.isRequired,
   updateValue: PropTypes.func.isRequired,
   valid: PropTypes.oneOf([true, false, null]),
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default FormRadioInput;

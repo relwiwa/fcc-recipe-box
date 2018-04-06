@@ -13,6 +13,13 @@ export class FormTabElement {
   }
 }
 
+export class FormTabSpec {
+  constructor(title, icon) {
+    this.title = title;
+    this.icon = icon;
+  }
+}
+
 export class Ingredient {
   constructor(quantity, unit, description) {
     this.description = description;  

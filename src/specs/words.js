@@ -2,7 +2,7 @@ import { Numerus } from './models';
 
 export const filterDescription = 'Recipes';
 
-export const manageRecipeTabTitles = {
+export const formRecipeTabs = {
   general: 'General',
   ingredients: 'Ingredients',
   preparation: 'Preparation',

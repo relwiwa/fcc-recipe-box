@@ -31,7 +31,7 @@ class RecipeBox extends Component {
     this.setState({
       allRecipes: startupRecipes,
 //      currentRecipe: 'deabcdefgh-id',
-//      mode: addRecipe,
+      mode: addRecipe,
     });
   }
 

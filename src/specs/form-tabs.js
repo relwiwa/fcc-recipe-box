@@ -2,12 +2,12 @@ import FormRadioInput from '../reusable-components/form-radio-input';
 import FormTextInput from '../reusable-components/form-text-input';
 import FormTextarea from '../reusable-components/form-text-input';
 
-import { FormTabElement } from './models';
-import { manageRecipeTabTitles, recipeCategories, recipeProperties } from './words';
+import { FormTabElement, FormTabSpec } from './models';
+import { recipeCategories, recipeProperties, formRecipeTabs } from './words';
 
 const { dessert, mainDish, salad, starter } = recipeCategories;
 const { recipeCategory, recipeDescription, recipeImage, recipeTitle } = recipeProperties;
-const { general, ingredients, preparation } = manageRecipeTabTitles;
+const { general, ingredients, preparation } = formRecipeTabs;
 
 const formTabElementOrder = {};
 formTabElementOrder[general] = [recipeTitle, recipeDescription, recipeCategory, recipeImage];
@@ -70,6 +70,10 @@ formTabElementSpecs[recipeImage] = new FormTabElement(
   }),
 );
 
-const formTabOrder = [general, ingredients, preparation];
+const formTabSpecs = [
+  new FormTabSpec(general, 'fa-info'),
+  new FormTabSpec(ingredients, 'fa-shopping-bag'),
+  new FormTabSpec(preparation, 'fa-cogs')
+];
 
-export { formTabElementOrder, formTabElementSpecs, formTabOrder };
+export { formTabElementOrder, formTabElementSpecs, formTabSpecs };
