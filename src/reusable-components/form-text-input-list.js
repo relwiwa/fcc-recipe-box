@@ -11,7 +11,6 @@ const FormTextInputList = ({ label, placeholder, requirement, updateValue, valid
   };
 
   const removeItem = (index) => {
-    console.log(index);
     let newValues = [...value].splice(0, index);
     newValues = newValues.concat([...value].splice(index  + 1));
     updateValue(newValues);

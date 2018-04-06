@@ -19,7 +19,7 @@ const FormElement = ({ children, label, requirement, valid }) => {
 };
 
 FormElement.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
   label: PropTypes.string.isRequired,
   requirement: PropTypes.string.isRequired,
   valid: PropTypes.oneOf([true, false, null]),  
