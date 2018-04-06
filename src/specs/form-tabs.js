@@ -1,18 +1,19 @@
 import FormRadioInput from '../reusable-components/form-radio-input';
 import FormTextInput from '../reusable-components/form-text-input';
+import FormTextInputList from '../reusable-components/form-text-input-list';
 import FormTextarea from '../reusable-components/form-text-input';
 
 import { FormTabElement, FormTabSpec } from './models';
 import { recipeCategories, recipeProperties, formRecipeTabs } from './words';
 
 const { dessert, mainDish, salad, starter } = recipeCategories;
-const { recipeCategory, recipeDescription, recipeImage, recipeTitle } = recipeProperties;
+const { recipeCategory, recipeDescription, recipeImage, recipePreparation, recipeTitle } = recipeProperties;
 const { general, ingredients, preparation } = formRecipeTabs;
 
 const formTabElementOrder = {};
 formTabElementOrder[general] = [recipeTitle, recipeDescription, recipeCategory, recipeImage];
 formTabElementOrder[ingredients] = [];
-formTabElementOrder[preparation] = [];
+formTabElementOrder[preparation] = [recipePreparation];
 
 const formTabElementSpecs = {};
 formTabElementSpecs[recipeTitle] = new FormTabElement(
@@ -70,10 +71,28 @@ formTabElementSpecs[recipeImage] = new FormTabElement(
   }),
 );
 
+formTabElementSpecs[recipePreparation] = new FormTabElement(
+  'List The Steps To Prepare The Dish',
+  null,
+  'Recipe Preparation Step',
+  true,
+  'Enter At Least 25 Characters For Each Step',
+  FormTextInputList,
+  ((elementContents) => {
+    let allValid = true;
+    elementContents.map(elementContent => {
+      if (elementContent.length < 25) {
+        allValid = false;
+      }
+    });
+    return allValid;
+  }),
+);
+
 const formTabSpecs = [
+  new FormTabSpec(preparation, 'fa-cogs'),
   new FormTabSpec(general, 'fa-info'),
   new FormTabSpec(ingredients, 'fa-shopping-bag'),
-  new FormTabSpec(preparation, 'fa-cogs')
 ];
 
 export { formTabElementOrder, formTabElementSpecs, formTabSpecs };

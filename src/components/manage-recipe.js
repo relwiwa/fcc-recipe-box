@@ -5,6 +5,7 @@ import FormContainer from '../reusable-components/form-container';
 import FormRadioInput from '../reusable-components/form-radio-input';
 import FormTextarea from '../reusable-components/form-textarea';
 import FormTextInput from '../reusable-components/form-text-input';
+import FormTextInputList from '../reusable-components/form-text-input-list';
 
 import { formTabElementOrder, formTabElementSpecs, formTabSpecs } from '../specs/form-tabs';
 

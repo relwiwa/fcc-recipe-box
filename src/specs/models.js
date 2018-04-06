@@ -29,13 +29,13 @@ export class Ingredient {
 }
 
 export class Recipe {
-  constructor(recipeId, recipeTitle, recipeCategory, recipeDescription, recipeIngredients, recipeSteps, recipeImage) {
+  constructor(recipeId, recipeTitle, recipeCategory, recipeDescription, recipeIngredients, recipePreparation, recipeImage) {
     this.recipeCategory = recipeCategory;
     this.recipeDescription = recipeDescription;
     this.recipeId = recipeId;
     this.recipeImage = recipeImage;
     this.recipeIngredients = recipeIngredients;
-    this.recipeSteps = recipeSteps;
+    this.recipePreparation = recipePreparation;
     this.recipeTitle = recipeTitle;
   }
 }
