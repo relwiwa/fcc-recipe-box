@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurrentRecipe = (() => {}) }) => {
-  const { recipeDescription, recipeImage, recipeIngredients, recipeTitle, recipeSteps } = recipe;
+  const { recipeDescription, recipeImage, recipeIngredients, recipeTitle, recipePreparation } = recipe;
 
   return (
     <div className="display-recipe grid-x grid-margin-y align-center">
@@ -12,7 +12,7 @@ const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurre
         <div className="grid-x grid-margin-y grid-margin-x align-middle align-center">
           <div className="cell medium-6 medium-order-2 large-7">{recipeDescription}</div>
           <div className="cell medium-6 medium-order-1 large-5">
-            <div className="grid-x">
+            <div className="grid-x align-center medium-align-left">
               <div className="cell small-8 medium-10 large-12">
                 <img src={recipeImage} title={'Image of ' + recipeTitle} alt={'Image of ' + recipeTitle} style={{borderRadius: '100%', boxShadow: '0px 0px 10px'}} />
               </div>
@@ -33,7 +33,7 @@ const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurre
           <h2 className="cell"><span className="fa fa-cogs"></span> Preparation <span className="fa fa-cogs"></span></h2>
           <div className="cell">
             <div className="grid-x grid-margin-x grid-margin-y">
-              {recipeSteps.map((step, index) => (
+              {recipePreparation.map((step, index) => (
                 <div key={index} className="cell medium-6 large-4 callout primary">
                   <h4>Step {index + 1}</h4>
                   <p>{step}</p>
@@ -49,13 +49,13 @@ const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurre
             className="button secondary"
             onClick={editCurrentRecipe}
           >
-            Edit
+            <span className="fa fa-edit"></span> Edit
           </a>
           <a
             className="button"
             onClick={() => resetCurrentRecipe()}          
           >
-            Go Back
+            Go Back <span className="fa fa-level-up"></span>
           </a>
         </div>
       </div>

@@ -38,7 +38,7 @@ class CategoryFilter extends Component {
             className="button secondary"
             onClick={() => this.toggleFilterVisibility()}
           >
-            Filter {filterDescription}
+            <span className="fa fa-filter"></span> Filter {filterDescription}
           </a>
         }
         {filtersVisible
@@ -46,7 +46,7 @@ class CategoryFilter extends Component {
             className="button secondary"
             onClick={() => this.toggleFilterVisibility()}
           >
-            Hide Filters
+            Hide Filters <span className="fa fa-level-up"></span>
           </a>
         }
       </div>

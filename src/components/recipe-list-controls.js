@@ -21,7 +21,7 @@ const RecipeListControls = ({ currentCategoryFilters, filterDescription, recipeC
           className="button warning"
           onClick={() => updateMode(modes.addRecipe)}
         >
-          Add Recipe
+          <span className="fa fa-plus"></span> Add Recipe
         </a>
       </div>
     </div>
