@@ -87,8 +87,10 @@ class RecipeBox extends Component {
         />}
         {mode === addRecipe && <AddRecipe
           addRecipe={(newRecipe) => this.addRecipe(newRecipe)}
+          cancelAddRecipe={() => this.setState({ mode: displayRecipes })}
         />}
         {mode === editRecipe && <EditRecipe
+          cancelEditRecipe={() => this.setState({ mode: displayRecipes })}
           recipe={allRecipes[currentRecipe]}
           updateRecipe={(newRecipe) => this.updateRecipe(newRecipe)}
         />}

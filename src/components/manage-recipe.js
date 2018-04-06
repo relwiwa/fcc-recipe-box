@@ -23,7 +23,31 @@ class ManageRecipe extends Component {
       formFieldsValidity: formFieldsValidity,
     };
 
+    this.getAllTabsValidity = this.getAllTabsValidity.bind(this);
+    this.getCurrentTabsValidity = this.getCurrentTabsValidity.bind(this);
     this.updateValue = this.updateValue.bind(this);
+  }
+
+  getAllTabsValidity() {
+    const { formFieldsValidity } = this.state;
+    let allTabsValid = true;
+    Object.keys(formFieldsValidity).map(formField => {
+      if (formFieldsValidity[formField] === false) {
+        allTabsValid = false;
+      }
+    });
+    return allTabsValid;
+  }
+
+  getCurrentTabsValidity() {
+    const { currentTab, formFieldsValidity } = this.state;
+    let currentTabValid = true;
+    formTabElementOrder[currentTab].map(formTabElement => {
+      if (formFieldsValidity[formTabElement] === false) {
+        currentTabValid = false;
+      }
+    });
+    return currentTabValid;
   }
 
   updateValue(formElement, newValue) {
@@ -39,13 +63,16 @@ class ManageRecipe extends Component {
   }    
   
   render() {
-    const { saveRecipe } = this.props;
+    const { cancelFormInput, saveRecipe } = this.props;
     const { currentTab, formFieldsValidity, formFieldsValues } = this.state;
 
     return (
       <div className="manage-recipe">
         <FormContainer
+          allTabsValid={this.getAllTabsValidity()}
+          cancelFormInput={cancelFormInput}
           currentTab={currentTab}
+          currentTabValid={this.getCurrentTabsValidity()}
           formElements={formTabElementOrder[currentTab].map(formTabElement => {
             const props = formTabElementSpecs[formTabElement];
             const FormElementType = formTabElementSpecs[formTabElement].type;
@@ -67,6 +94,7 @@ class ManageRecipe extends Component {
 }
 
 ManageRecipe.propTypes = {
+  cancelFormInput: PropTypes.func.isRequired,
   recipe: PropTypes.object.isRequired,
   saveRecipe: PropTypes.func.isRequired,
 };
