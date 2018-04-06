@@ -5,7 +5,7 @@ const RecipeListItem = ({ description = '', id = '', image, title = '', updateCu
   return (
     <div
       className="recipe-list-item cell callout align-self-stretch text-center"
-      style={{background: '#1779ba', color: '#d7ecfa'}}
+      style={{background: '#1779ba', color: '#d7ecfa', cursor: 'pointer'}}
       onClick={() => updateCurrentRecipe(id)}
     >
       <div className="grid-x grid-margin-x grid-margin-y align-center">
