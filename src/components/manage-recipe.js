@@ -6,58 +6,41 @@ import FormRadioInput from '../reusable-components/form-radio-input';
 import FormTextarea from '../reusable-components/form-textarea';
 import FormTextInput from '../reusable-components/form-text-input';
 
-import { recipeProperties } from '../specs/words';
 import { formTabElementOrder, formTabElementSpecs, formTabSpecs } from '../specs/form-tabs';
 
 class ManageRecipe extends Component {
   constructor(props) {
     super(props);
-    const formTabs = {};
-    formTabSpecs.map(formTab => {
-      const { title } = formTab;
-      formTabs[title] = {
-        elements: {},
-      };
-      let tabValid = true;
-      formTabElementOrder[title].map(formTabElement => {
-        formTabs[title].elements[formTabElement] = {};
-        formTabs[title].elements[formTabElement].value = props.recipe[formTabElement];
-        const tabElementValid = formTabElementSpecs[formTabElement].validation(props.recipe[formTabElement]);
-        formTabs[title].elements[formTabElement].valid = tabElementValid;
-        if (tabElementValid === false) {
-          tabValid = false;
-        }
-      });
-      formTabs[title].valid = tabValid;
+
+    const formFieldsValidity = {};
+    Object.keys(formTabElementSpecs).map(formTabElement => {
+      formFieldsValidity[formTabElement] = formTabElementSpecs[formTabElement].validation(props.recipe[formTabElement]);
     });
+
     this.state = {
       currentTab: formTabSpecs[0].title,
-      formTabs: formTabs,
+      formFieldsValues: {...props.recipe},
+      formFieldsValidity: formFieldsValidity,
     };
 
     this.updateValue = this.updateValue.bind(this);
   }
 
   updateValue(formElement, newValue) {
-    const { currentTab, formTabs } = this.state;
-    const newFormTabs = {...formTabs};
-    newFormTabs[currentTab].elements[formElement].value = newValue;
-    newFormTabs[currentTab].elements[formElement].valid = formTabElementSpecs[formElement].validation(newValue);
-    let currentTabValid = true;
-    formTabElementOrder[currentTab].map(element => {
-      if (newFormTabs[currentTab].elements[element].valid === false) {
-        currentTabValid = false;
-      }
-    });
-    newFormTabs[currentTab].valid = currentTabValid;
+    const { currentTab, formFieldsValidity, formFieldsValues } = this.state;
+    const newFormFieldsValidity = {...formFieldsValidity};
+    const newFormFieldsValues = {...formFieldsValues};
+    newFormFieldsValues[formElement] = newValue;
+    newFormFieldsValidity[formElement] = formTabElementSpecs[formElement].validation(newValue);
     this.setState({
-      formTabs: newFormTabs,
+      formFieldsValidity: newFormFieldsValidity,
+      formFieldsValues: newFormFieldsValues,
     });
   }    
   
   render() {
     const { saveRecipe } = this.props;
-    const { currentTab, formTabs } = this.state;
+    const { currentTab, formFieldsValidity, formFieldsValues } = this.state;
 
     return (
       <div className="manage-recipe">
@@ -70,25 +53,17 @@ class ManageRecipe extends Component {
               key={formTabElement}
               {...props}
               updateValue={(valueToUpdate) => this.updateValue(formTabElement, valueToUpdate)}
-              value={formTabs[currentTab].elements[formTabElement].value}
-              valid={formTabs[currentTab].elements[formTabElement].valid}
+              value={formFieldsValues[formTabElement]}
+              valid={formFieldsValidity[formTabElement]}
             />;
           })}
-          formTabSpecs={formTabSpecs.map(formTabSpec => {
-            const props={...formTabSpec};
-            props.valid = formTabs[formTabSpec.title].valid
-            return props;
-          })}
+          formTabSpecs={formTabSpecs}
           saveFormInput={saveRecipe}
           updateCurrentTab={(tab) => this.setState({ currentTab: tab })}
         />
       </div>
     );
   }
-}
-
-ManageRecipe.defaultProps = {
-
 }
 
 ManageRecipe.propTypes = {
