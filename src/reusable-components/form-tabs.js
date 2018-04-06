@@ -12,7 +12,7 @@ const FormTabs = ({ currentTab, currentTabValid, formTabSpecs, updateCurrentTab 
             onClick={(tab.title === currentTab || !currentTabValid) ? null : () => updateCurrentTab(tab.title)}
             style={currentTabValid ? { cursor: 'pointer' } : null }
           >
-            <span className={'fa ' + tab.icon}></span> {tab.title}
+            <span className={'fa ' + tab.icon}></span><br className="hide-for-medium" /> {tab.title}
           </a>
         ))}
       </div>

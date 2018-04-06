@@ -55,7 +55,7 @@ const FormTextInputList = ({ label, placeholder, requirement, updateValue, valid
         <a
           className="button warning"
           onClick={() => updateValue([...value, ''])}
-        >Add Step</a>
+        ><span className="fa fa-plus"></span> Add Item</a>
       </div>
     </div>
   </Fragment>;

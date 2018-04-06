@@ -18,11 +18,11 @@ const FormNavigation = ({ allTabsValid, cancelFormInput, currentTab, currentTabV
           <a
             className={'button ' + ((isFirstTab || !currentTabValid) ? 'disabled' : null)}
             onClick={(isFirstTab || !currentTabValid) ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber - 1].title)}
-          >Previous</a>
+          ><span className="fa fa-angle-left"></span> Previous</a>
           <a
             className={'button ' + ((isLastTab || !currentTabValid) ? 'disabled' : null)}
             onClick={(isLastTab || !currentTabValid)  ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber + 1].title)}
-          >Next</a>
+          >Next <span className="fa fa-angle-right"></span></a>
         </div>
       </div>
       <div className="cell medium-6">
@@ -30,11 +30,11 @@ const FormNavigation = ({ allTabsValid, cancelFormInput, currentTab, currentTabV
           <a
             className="button secondary"
             onClick={cancelFormInput}
-          >Cancel Input</a>
+          ><span className="fa fa-close"></span> Cancel</a>
           <a
             className={'button success' + (allTabsValid ? '' : ' disabled')}
             onClick={allTabsValid ? saveFormInput : null}
-          >Save Input</a>
+          ><span className="fa fa-save"></span> Save Input</a>
         </div>
       </div>
     </div>
