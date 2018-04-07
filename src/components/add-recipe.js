@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Ingredient, Recipe } from '../specs/models';
+import Ingredient from '../models/ingredient';
+import Recipe from '../models/recipe';
 import ManageRecipe from './manage-recipe';
 
 const AddRecipe = ({ addRecipe, cancelAddRecipe }) => {

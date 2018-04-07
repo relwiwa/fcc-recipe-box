@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 import { startupRecipes } from '../specs/startup-recipes';
-import { recipeCategories } from '../specs/words';
-import { modes } from '../specs/words';
+import { modes, recipeCategories } from '../specs/words';
 
 import AddRecipe from './add-recipe';
 import EditRecipe from './edit-recipe';

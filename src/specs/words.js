@@ -1,4 +1,4 @@
-import { Numerus } from './models';
+import Numerus from '../models/numerus';
 
 export const filterDescription = 'Recipes';
 

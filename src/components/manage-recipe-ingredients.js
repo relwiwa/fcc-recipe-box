@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FormElement from '../reusable-components/form-element';
 
 import { ingredientProperties, units } from '../specs/words';
-import { Ingredient } from '../specs/models';
+import Ingredient from '../models/ingredient';
 
 const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
 

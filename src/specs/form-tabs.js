@@ -4,7 +4,8 @@ import FormTextInputList from '../reusable-components/form-text-input-list';
 import FormTextarea from '../reusable-components/form-text-input';
 import ManageRecipeIngredients from '../components/manage-recipe-ingredients';
 
-import { FormTabElement, FormTabSpec } from './models';
+import FormTabElement from '../models/form-tab-element';
+import FormTabSpec from '../models/form-tab-specs';
 import { ingredientProperties, recipeCategories, recipeProperties, formRecipeTabs } from './words';
 
 const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;

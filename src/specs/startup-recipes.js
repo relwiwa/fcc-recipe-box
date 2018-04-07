@@ -1,4 +1,5 @@
-import { Ingredient, Recipe } from './models';
+import Ingredient from '../models/ingredient';
+import Recipe from '../models/recipe';
 import { recipeCategories, units } from './words';
 
 const { dessert, mainDish, salad, starter } = recipeCategories;
