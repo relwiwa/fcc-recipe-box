@@ -2,17 +2,19 @@ import FormRadioInput from '../reusable-components/form-radio-input';
 import FormTextInput from '../reusable-components/form-text-input';
 import FormTextInputList from '../reusable-components/form-text-input-list';
 import FormTextarea from '../reusable-components/form-text-input';
+import ManageRecipeIngredients from '../components/manage-recipe-ingredients';
 
 import { FormTabElement, FormTabSpec } from './models';
-import { recipeCategories, recipeProperties, formRecipeTabs } from './words';
+import { ingredientProperties, recipeCategories, recipeProperties, formRecipeTabs } from './words';
 
+const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
 const { dessert, mainDish, salad, starter } = recipeCategories;
-const { recipeCategory, recipeDescription, recipeImage, recipePreparation, recipeTitle } = recipeProperties;
+const { recipeCategory, recipeDescription, recipeImage, recipeIngredients, recipePreparation, recipeTitle } = recipeProperties;
 const { general, ingredients, preparation } = formRecipeTabs;
 
 const formTabElementOrder = {};
 formTabElementOrder[general] = [recipeTitle, recipeDescription, recipeCategory, recipeImage];
-formTabElementOrder[ingredients] = [];
+formTabElementOrder[ingredients] = [recipeIngredients];
 formTabElementOrder[preparation] = [recipePreparation];
 
 const formTabElementSpecs = {};
@@ -79,20 +81,55 @@ formTabElementSpecs[recipePreparation] = new FormTabElement(
   'Enter At Least 25 Characters For Each Step',
   FormTextInputList,
   ((elementContents) => {
-    let allValid = true;
-    elementContents.map(elementContent => {
-      if (elementContent.length < 25) {
-        allValid = false;
-      }
-    });
-    return allValid;
+    if (elementContents.length <= 0) {
+      return false;
+    }
+    else {
+      let allValid = true;
+      elementContents.map(elementContent => {
+        if (elementContent.length < 25) {
+          allValid = false;
+        }
+      });
+      return allValid;        
+    }
+  }),
+);
+
+formTabElementSpecs[recipeIngredients] = new FormTabElement(
+  'List All Of The Ingredients',
+  null,
+  'Recipe Ingredient',
+  true,
+  'Enter The Quantity, Unit, And Description For All Ingredients',
+  ManageRecipeIngredients,
+  ((elementContents) => {
+    if (elementContents.length <= 0) {
+      return false;
+    }
+    else {
+      let allValid = true;
+      elementContents.map(elementContent => {
+        const quantityNumber = Number(elementContent[ingredientQuantity]);
+        if (quantityNumber <= 0 || String(quantityNumber) !== elementContent[ingredientQuantity]) {
+          allValid = false;
+        }
+        if (elementContent[ingredientUnit] === null) {
+          allValid = false;
+        }
+        if (elementContent[ingredientDescription].length < 2) {
+          allValid = false;
+        }
+      });
+      return allValid;        
+    }
   }),
 );
 
 const formTabSpecs = [
-  new FormTabSpec(preparation, 'fa-cogs'),
   new FormTabSpec(general, 'fa-info'),
   new FormTabSpec(ingredients, 'fa-shopping-bag'),
+  new FormTabSpec(preparation, 'fa-cogs'),
 ];
 
 export { formTabElementOrder, formTabElementSpecs, formTabSpecs };

@@ -18,7 +18,7 @@ const FormTextInputList = ({ label, placeholder, requirement, updateValue, valid
 
   const renderInputListItem = (index, itemValue, disabled) => {
     return (
-      <div className="grid-x">
+      <div className="grid-x" key={index}>
         <div className="cell small-9 medium-11">
           <div className="input-group">
             <span className="input-group-label">{index + 1}</span>
@@ -41,13 +41,15 @@ const FormTextInputList = ({ label, placeholder, requirement, updateValue, valid
     );
   }
 
+  console.log(value.length, value);
+
   return <Fragment>
     <FormElement
       label={label}
       requirement={requirement}
       valid={valid}
     >
-      {value.map((item, index) => renderInputListItem(index, item, false))}
+      {value.map((item, index) => renderInputListItem(index, item, value.length <= 1 ? true : false))}
       {value.length === 0 && renderInputListItem(0, '', true)}
     </FormElement>
     <div className="grid-x grid-padding-x">

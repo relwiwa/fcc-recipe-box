@@ -30,8 +30,8 @@ class RecipeBox extends Component {
   componentDidMount() {
     this.setState({
       allRecipes: startupRecipes,
-      currentRecipe: 'deabcdefgh-id',
-      mode: displayRecipes,
+//      currentRecipe: 'deabcdefgh-id',
+      mode: addRecipe,
     });
   }
 

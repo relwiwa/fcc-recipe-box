@@ -21,10 +21,10 @@ export class FormTabSpec {
 }
 
 export class Ingredient {
-  constructor(quantity, unit, description) {
-    this.description = description;  
-    this.quantity = quantity;
-    this.unit = unit;
+  constructor(ingredientQuantity = '', ingredientUnit = 'piece of', ingredientDescription = '') {
+    this.ingredientDescription = ingredientDescription;  
+    this.ingredientQuantity = ingredientQuantity;
+    this.ingredientUnit = ingredientUnit;
   }
 }
 

@@ -8,6 +8,12 @@ export const formRecipeTabs = {
   preparation: 'Preparation',
 };
 
+export const ingredientProperties = {
+  ingredientDescription: 'ingredientDescription',
+  ingredientQuantity: 'ingredientQuantity',
+  ingredientUnit: 'ingredientUnit',
+};
+
 export const modes = {
   addRecipe: 'addRecipe',
   displayRecipes: 'displayRecipes',
