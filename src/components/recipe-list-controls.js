@@ -8,7 +8,7 @@ import { modes } from '../specs/words';
 const RecipeListControls = ({ currentCategoryFilters, filterDescription, recipeCategories, updateCategoryFilters, updateMode }) => {
   return (
     <div className="recipe-list-controls grid-x grid-margin-x align-middle">
-      <div className="cell small-8">
+      <div className="cell small-7 medium-9">
         <CategoryFilter
           currentCategoryFilters={currentCategoryFilters}
           filterCategories={recipeCategories}
@@ -16,12 +16,12 @@ const RecipeListControls = ({ currentCategoryFilters, filterDescription, recipeC
           updateCategoryFilters={updateCategoryFilters}
         />
       </div>
-      <div className="cell small-4 button-group expanded">
+      <div className="cell small-5 medium-3 button-group expanded">
         <a
           className="button warning"
           onClick={() => updateMode(modes.addRecipe)}
         >
-          <span className="fa fa-plus"></span> Add Recipe
+          <span className="fa fa-plus"></span><br className="show-for-small-only" /> Add Recipe
         </a>
       </div>
     </div>

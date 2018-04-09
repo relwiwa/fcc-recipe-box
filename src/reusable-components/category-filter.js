@@ -25,7 +25,7 @@ class CategoryFilter extends Component {
         {filtersVisible && filterCategories.map(category => {
           const categoryIsFiltered = currentCategoryFilters.indexOf(category) < 0 ? false : true;
           return <a
-            className={'button' + (categoryIsFiltered ? ' disabled' : '')}
+            className={'button secondary' + (categoryIsFiltered ? ' disabled' : '')}
             key={category}
             onClick={() => updateCategoryFilters(category)}
             style={{cursor: 'pointer'}}
@@ -38,7 +38,7 @@ class CategoryFilter extends Component {
             className="button secondary"
             onClick={() => this.toggleFilterVisibility()}
           >
-            <span className="fa fa-filter"></span> Filter {filterDescription}
+            <span className="fa fa-filter"></span> Filter <span className="show-for-medium">{filterDescription}</span>
           </a>
         }
         {filtersVisible
