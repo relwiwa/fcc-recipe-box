@@ -20,7 +20,7 @@ const DisplayRecipe = ({ deleteCurrentRecipe, editCurrentRecipe, recipe = {}, re
           <h2 className="cell"><span className="fa fa-shopping-bag"></span> Ingredients <span className="fa fa-shopping-bag"></span></h2>
           {recipeIngredients.map((ingredient, index) => (
             <div key={index} className="callout primary cell small-6 medium-4">
-              {ingredient[ingredientQuantity]} {ingredient[ingredientUnit]} {ingredient[ingredientDescription]}
+              {ingredient[ingredientQuantity]} {ingredient[ingredientUnit]} of {ingredient[ingredientDescription]}
             </div>
           ))}
         </div>
