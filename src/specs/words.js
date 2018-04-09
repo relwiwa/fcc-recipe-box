@@ -34,7 +34,6 @@ export const recipeProperties = {
   recipeCategory: 'recipeCategory',
   recipeDescription: 'recipeDescription',
   recipeId:  'recipeId',
-  recipeImage: 'recipeImage',
   recipeIngredients: 'recipeIngredients',
   recipePreparation: 'recipePreparation',
   recipeTitle: 'recipeTitle',

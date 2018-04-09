@@ -14,7 +14,7 @@ const { recipeCategory, recipeDescription, recipeImage, recipeIngredients, recip
 const { general, ingredients, preparation } = formRecipeTabs;
 
 const formTabElementOrder = {};
-formTabElementOrder[general] = [recipeTitle, recipeDescription, recipeCategory, recipeImage];
+formTabElementOrder[general] = [recipeTitle, recipeDescription, recipeCategory];
 formTabElementOrder[ingredients] = [recipeIngredients];
 formTabElementOrder[preparation] = [recipePreparation];
 
@@ -52,25 +52,6 @@ formTabElementSpecs[recipeCategory] = new FormTabElement(
   FormRadioInput,
   ((elementContent) => {
     return (elementContent !== null) ? true: false;
-  }),
-);
-
-formTabElementSpecs[recipeImage] = new FormTabElement(
-  'Do You Want To Add An Image To Your Recipe?',
-  null,
-  'URL Of An Image Of Your Recipe',
-  false,
-  'Enter A Proper Image URL (Optional)',
-  FormTextInput,
-  ((elementContent) => {
-    if (elementContent !== '') {
-      const expression = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)(.*\.(?:png|jpg|jpeg|gif|svg))/gi;
-      const regExp = new RegExp(expression);
-      return (elementContent.match(regExp) !== null ? true : false);
-    }
-    else {
-      return null;
-    }
   }),
 );
 

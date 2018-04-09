@@ -5,9 +5,10 @@ import RecipeList from './recipe-list';
 import RecipeListControls from './recipe-list-controls';
 import RecipeListItem from './recipe-list-item';
 
-import { filterDescription } from '../specs/words';
+import { filterDescription, recipeProperties } from '../specs/words';
+const { recipeId, recipeDescription, recipeTitle } = recipeProperties;
 
-const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], recipes = {}, updateCategoryFilters = (() => {}), updateCurrentRecipe = (() => {}), updateMode = (() => {}) }) => {
+const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], recipes = {}, updateCategoryFilters, updateCurrentRecipe, updateMode }) => {
   const amountOfRecipes = Object.keys(recipes).length;
 
   const renderRecipeListControls = () => {
@@ -30,11 +31,10 @@ const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], re
         {Object.keys(recipes).map(key => {
           if (currentCategoryFilters.indexOf(recipes[key].recipeCategory) < 0) {
             return <RecipeListItem
-              key={recipes[key].recipeId}
-              description={recipes[key].recipeDescription}
-              id={recipes[key].recipeId}
-              image={recipes[key].recipeImage}
-              title={recipes[key].recipeTitle}
+              key={recipes[key][recipeId]}
+              description={recipes[key][recipeDescription]}
+              id={recipes[key][recipeId]}
+              title={recipes[key][recipeTitle]}
               updateCurrentRecipe={updateCurrentRecipe}
             />
           }

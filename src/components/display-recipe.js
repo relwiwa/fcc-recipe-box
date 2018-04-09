@@ -5,7 +5,7 @@ import { ingredientProperties } from '../specs/words';
 const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
 
 const DisplayRecipe = ({ deleteCurrentRecipe, editCurrentRecipe, recipe = {}, resetCurrentRecipe }) => {
-  const { recipeDescription, recipeImage, recipeIngredients, recipeTitle, recipePreparation } = recipe;
+  const { recipeDescription, recipeIngredients, recipeTitle, recipePreparation } = recipe;
 
   return (
     <div className="display-recipe grid-x grid-margin-y align-center">
@@ -13,14 +13,7 @@ const DisplayRecipe = ({ deleteCurrentRecipe, editCurrentRecipe, recipe = {}, re
         <h1>{recipeTitle}</h1>
         <hr />
         <div className="grid-x grid-margin-y grid-margin-x align-middle align-center">
-          <div className="cell medium-6 medium-order-2 large-7">{recipeDescription}</div>
-          <div className="cell medium-6 medium-order-1 large-5">
-            <div className="grid-x align-center medium-align-left">
-              <div className="cell small-8 medium-10 large-12">
-                <img src={recipeImage} title={'Image of ' + recipeTitle} alt={'Image of ' + recipeTitle} style={{borderRadius: '100%', boxShadow: '0px 0px 10px'}} />
-              </div>
-            </div>
-          </div>      
+          <div className="cell">{recipeDescription}</div>
         </div>
         <hr />
         <div className="grid-x grid-margin-x grid-margin-y">

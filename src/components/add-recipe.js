@@ -10,7 +10,7 @@ const AddRecipe = ({ addRecipe, cancelAddRecipe }) => {
     <div className="add-recipe">
       <ManageRecipe
         cancelFormInput={cancelAddRecipe}
-        recipe={new Recipe(null, '', null, '', [new Ingredient()], [''], '')}
+        recipe={new Recipe(null, '', null, '', [new Ingredient()], [''])}
         saveRecipe={addRecipe}
       />
     </div>
