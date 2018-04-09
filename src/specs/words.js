@@ -40,7 +40,11 @@ export const recipeProperties = {
 };
 
 export const units = {
-  piece: new Numerus('piece', 'pieces'),
-  gram: new Numerus('gram', 'grams'),
-  liter: new Numerus('liter', 'liters'),
+  bottle: new Numerus('Bottle', 'Bottles'),
+  piece: new Numerus('Piece', 'Pieces'),
+  gram: new Numerus('Gram', 'Grams'),
+  liter: new Numerus('Liter', 'Liters'),
+  pack: new Numerus('Pack', 'Packs'),
+  spoon: new Numerus('Spoon', 'Spoons'),
+  teaSpoon: new Numerus('Tea Spoon', 'Tea Spoons'),
 };
