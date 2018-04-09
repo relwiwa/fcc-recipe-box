@@ -24,7 +24,7 @@ const ManageRecipeIngredients = ({ label, placeholder, requirement, updateValue,
   const renderInputListItem = (index, itemValues, disabled) => {
 
     return (
-      <div className="grid-x grid-margin-x">
+      <div key={index} className="grid-x grid-margin-x">
         <div className="cell small-10 large-11">
           <div className="grid-x grid-margin-x">
             <div className="cell small-6 medium-2">
@@ -43,6 +43,7 @@ const ManageRecipeIngredients = ({ label, placeholder, requirement, updateValue,
                 style={{backgroundImage: 'none'}}
               >
                 {Object.keys(units).map(key => <option
+                  key={key}
                   value={key}
                 >
                   {(itemValues[ingredientQuantity] <= 1 || !itemValues[ingredientQuantity]) ? units[key].singular : units[key].plural}
