@@ -38,7 +38,8 @@ class RecipeBox extends Component {
       this.allRecipes = JSON.parse(storedRecipes);
     }
     this.setState({
-      mode: displayRecipes,
+      currentRecipe: 'abcdefgh-id',
+      mode: editRecipe,
     });
   }
 
@@ -94,6 +95,13 @@ class RecipeBox extends Component {
   }
 
   updateRecipe(recipe) {
+    const allRecipesNew = {...this.allRecipes};
+    allRecipesNew[recipe.recipeId] = {...recipe};
+    this.allRecipes = allRecipesNew;
+    this.saveAllRecipesToLocalStorage();
+    this.setState({
+      mode: displayRecipes,
+    });
     
   }
 
@@ -127,7 +135,7 @@ class RecipeBox extends Component {
         />}
         {mode === editRecipe && <EditRecipe
           cancelEditRecipe={() => this.setState({ mode: displayRecipes })}
-          recipe={allRecipes[currentRecipe]}
+          recipe={this.allRecipes[currentRecipe]}
           updateRecipe={(newRecipe) => this.updateRecipe(newRecipe)}
         />}
       </div>
