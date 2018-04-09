@@ -8,6 +8,7 @@ import RecipeListItem from './recipe-list-item';
 import { filterDescription } from '../specs/words';
 
 const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], recipes = {}, updateCategoryFilters = (() => {}), updateCurrentRecipe = (() => {}), updateMode = (() => {}) }) => {
+  const amountOfRecipes = Object.keys(recipes).length;
 
   const renderRecipeListControls = () => {
     return <RecipeListControls
@@ -22,7 +23,10 @@ const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], re
   return (
     <div className="recipe-list-view">
       {renderRecipeListControls()}
-      <RecipeList>
+      {amountOfRecipes === 0 && <div className="callout primary text-center">
+        There are no more recipes in your Recipe Box.
+      </div>}
+      {amountOfRecipes > 0 && <RecipeList>
         {Object.keys(recipes).map(key => {
           if (currentCategoryFilters.indexOf(recipes[key].recipeCategory) < 0) {
             return <RecipeListItem
@@ -35,8 +39,8 @@ const RecipeListView = ({ currentCategoryFilters = [], recipeCategories = [], re
             />
           }
         })}
-      </RecipeList>
-      {renderRecipeListControls()}
+      </RecipeList>}
+      {amountOfRecipes > 0 && renderRecipeListControls()}
     </div>
   );
 };

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ingredientProperties } from '../specs/words';
 const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
 
-const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurrentRecipe = (() => {}) }) => {
+const DisplayRecipe = ({ deleteCurrentRecipe, editCurrentRecipe, recipe = {}, resetCurrentRecipe }) => {
   const { recipeDescription, recipeImage, recipeIngredients, recipeTitle, recipePreparation } = recipe;
 
   return (
@@ -49,6 +49,12 @@ const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurre
       <div className="cell small-11">
         <div className="button-group align-right">
           <a
+            className="button warning"
+            onClick={deleteCurrentRecipe}
+          >
+            <span className="fa fa-trash-o"></span> Delete
+          </a>
+          <a
             className="button secondary"
             onClick={editCurrentRecipe}
           >
@@ -67,6 +73,7 @@ const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurre
 };
 
 DisplayRecipe.propTypes = {
+  deleteCurrentRecipe: PropTypes.func.isRequired,
   editCurrentRecipe: PropTypes.func.isRequired,
   recipe: PropTypes.object.isRequired,
   resetCurrentRecipe: PropTypes.func.isRequired,

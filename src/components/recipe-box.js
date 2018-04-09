@@ -24,6 +24,7 @@ class RecipeBox extends Component {
     this.allRecipes = {};
 
     this.addRecipe = this.addRecipe.bind(this);
+    this.deleteCurrentRecipe = this.deleteCurrentRecipe.bind(this);
     this.updateCategoryFilters = this.updateCategoryFilters.bind(this);
     this.updateRecipe = this.updateRecipe.bind(this);
   }
@@ -65,6 +66,17 @@ class RecipeBox extends Component {
       }
     }
     return recipeId;
+  }
+
+  deleteCurrentRecipe() {
+    const { currentRecipe } = this.state
+    const allRecipesNew = {...this.allRecipes};
+    delete allRecipesNew[currentRecipe];
+    this.allRecipes = allRecipesNew;
+    this.saveAllRecipesToLocalStorage();
+    this.setState({
+      currentRecipe: null,
+    });
   }
 
   getAllRecipesFromLocalStorage() {
@@ -116,6 +128,7 @@ class RecipeBox extends Component {
           <span className="fa fa-spinner fa-spin"></span> Recipes Are Being Loaded...
         </div>}
         {(currentRecipe && mode === displayRecipes) && <DisplayRecipe
+          deleteCurrentRecipe={() => this.deleteCurrentRecipe()}
           editCurrentRecipe={() => this.setState({ mode: editRecipe })}
           recipe={this.allRecipes[currentRecipe]}
           resetCurrentRecipe={() => this.setState({ currentRecipe: null })}
