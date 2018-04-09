@@ -1,5 +1,7 @@
+import Ingredient from './ingredient';
+
 export default class Recipe {
-  constructor(recipeId, recipeTitle, recipeCategory, recipeDescription, recipeIngredients, recipePreparation, recipeImage) {
+  constructor(recipeId = null, recipeTitle = '', recipeCategory = null, recipeDescription = '', recipeIngredients = [new Ingredient()], recipePreparation = [''], recipeImage = '') {
     this.recipeCategory = recipeCategory;
     this.recipeDescription = recipeDescription;
     this.recipeId = recipeId;

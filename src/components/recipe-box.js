@@ -38,8 +38,7 @@ class RecipeBox extends Component {
       this.allRecipes = JSON.parse(storedRecipes);
     }
     this.setState({
-      currentRecipe: 'abcdefgh-id',
-      mode: editRecipe,
+      mode: displayRecipes,
     });
   }
 

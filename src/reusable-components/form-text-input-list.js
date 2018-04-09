@@ -41,8 +41,6 @@ const FormTextInputList = ({ label, placeholder, requirement, updateValue, valid
     );
   }
 
-  console.log(value.length, value);
-
   return <Fragment>
     <FormElement
       label={label}
@@ -50,7 +48,6 @@ const FormTextInputList = ({ label, placeholder, requirement, updateValue, valid
       valid={valid}
     >
       {value.map((item, index) => renderInputListItem(index, item, value.length <= 1 ? true : false))}
-      {value.length === 0 && renderInputListItem(0, '', true)}
     </FormElement>
     <div className="grid-x grid-padding-x">
       <div className="cell text-right">
