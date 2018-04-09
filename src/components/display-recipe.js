@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { ingredientProperties } from '../specs/words';
+const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
+
 const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurrentRecipe = (() => {}) }) => {
   const { recipeDescription, recipeImage, recipeIngredients, recipeTitle, recipePreparation } = recipe;
 
@@ -24,7 +27,7 @@ const DisplayRecipe = ({ editCurrentRecipe = (() => {}), recipe = {}, resetCurre
           <h2 className="cell"><span className="fa fa-shopping-bag"></span> Ingredients <span className="fa fa-shopping-bag"></span></h2>
           {recipeIngredients.map((ingredient, index) => (
             <div key={index} className="callout primary cell small-6 medium-4">
-              {ingredient.quantity} {ingredient.unit} {ingredient.description}
+              {ingredient[ingredientQuantity]} {ingredient[ingredientUnit]} {ingredient[ingredientDescription]}
             </div>
           ))}
         </div>
