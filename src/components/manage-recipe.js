@@ -86,7 +86,7 @@ class ManageRecipe extends Component {
             />;
           })}
           formTabSpecs={formTabSpecs}
-          saveFormInput={saveRecipe}
+          saveFormInput={() => saveRecipe(formFieldsValues)}
           updateCurrentTab={(tab) => this.setState({ currentTab: tab })}
         />
       </div>

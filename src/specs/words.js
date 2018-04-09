@@ -14,10 +14,13 @@ export const ingredientProperties = {
   ingredientUnit: 'ingredientUnit',
 };
 
+export const localStorageStoredRecipes = 'storedRecipes';
+
 export const modes = {
   addRecipe: 'addRecipe',
   displayRecipes: 'displayRecipes',
   editRecipe: 'editRecipe',
+  loadRecipes: 'loadRecipes',
 };
 
 export const recipeCategories = {

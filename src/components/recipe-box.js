@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import uuidv1 from 'uuid/v1';
 
 import { startupRecipes } from '../specs/startup-recipes';
-import { modes, recipeCategories } from '../specs/words';
+import { localStorageStoredRecipes, modes, recipeCategories, recipeProperties } from '../specs/words';
 
 import AddRecipe from './add-recipe';
 import EditRecipe from './edit-recipe';
@@ -9,17 +10,18 @@ import DisplayRecipe from './display-recipe';
 import RecipeListView from './recipe-list-view';
 
 const { starter, mainDish, salad, dessert } = recipeCategories;
-const { addRecipe, displayRecipes, editRecipe } = modes;
+const { addRecipe, displayRecipes, editRecipe, loadRecipes } = modes;
 
 class RecipeBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allRecipes: {},
       currentCategoryFilters: [],
       currentRecipe: null,
-      mode: displayRecipes,
+      mode: loadRecipes,
     };
+
+    this.allRecipes = {};
 
     this.addRecipe = this.addRecipe.bind(this);
     this.updateCategoryFilters = this.updateCategoryFilters.bind(this);
@@ -27,18 +29,50 @@ class RecipeBox extends Component {
   }
 
   componentDidMount() {
+    const storedRecipes = this.getAllRecipesFromLocalStorage();
+    if (storedRecipes === null) {
+      this.allRecipes = startupRecipes;
+      this.saveAllRecipesToLocalStorage();
+    }
+    else {
+      this.allRecipes = JSON.parse(storedRecipes);
+    }
     this.setState({
-      allRecipes: startupRecipes,
-//      currentRecipe: 'deabcdefgh-id',
-      mode: addRecipe,
+      mode: displayRecipes,
     });
   }
 
   addRecipe(newRecipe) {
-    const { allRecipes } = this.state;
-    allRecipesNew = [...allRecipes];
-    allRecipesNew.push(newRecipes);
-    this.setState({ allRecipes: allRecipesNew });
+    const allRecipesNew = {...this.allRecipes};
+    const recipeId = this.createUniqueRecipeId();
+    newRecipe[recipeProperties.recipeId] = recipeId;
+    allRecipesNew[recipeId] = newRecipe;
+    this.allRecipes = allRecipesNew;
+    this.saveAllRecipesToLocalStorage();
+    this.setState({
+      currentRecipe: recipeId,
+      mode: displayRecipes,
+    });
+  }
+
+  createUniqueRecipeId() {
+    let isUniqueId = false;
+    let recipeId = null;
+    while (!isUniqueId) {
+      recipeId = uuidv1();
+      if (this.allRecipes[recipeId] === undefined) {
+        isUniqueId = true;
+      }
+    }
+    return recipeId;
+  }
+
+  getAllRecipesFromLocalStorage() {
+    return localStorage.getItem(localStorageStoredRecipes);
+  }
+
+  saveAllRecipesToLocalStorage() {
+    localStorage.setItem(localStorageStoredRecipes, JSON.stringify(this.allRecipes));    
   }
 
   updateCategoryFilters(category) {
@@ -59,8 +93,8 @@ class RecipeBox extends Component {
     this.setState({ currentCategoryFilters: newCategoryFilters });
   }
 
-  updateRecipe() {
-
+  updateRecipe(recipe) {
+    
   }
 
   render() {
@@ -71,14 +105,17 @@ class RecipeBox extends Component {
         <h1 className="text-center">
           Recipe Box
         </h1>
+        {mode === loadRecipes && <div className="text-center">
+          <span className="fa fa-spinner fa-spin"></span> Recipes Are Being Loaded...
+        </div>}
         {(currentRecipe && mode === displayRecipes) && <DisplayRecipe
           editCurrentRecipe={() => this.setState({ mode: editRecipe })}
-          recipe={allRecipes[currentRecipe]}
+          recipe={this.allRecipes[currentRecipe]}
           resetCurrentRecipe={() => this.setState({ currentRecipe: null })}
         />}
         {(!currentRecipe && mode === displayRecipes) && <RecipeListView
           currentCategoryFilters={currentCategoryFilters}
-          recipes={allRecipes}
+          recipes={this.allRecipes}
           recipeCategories={[starter.plural, mainDish.plural, salad.plural, dessert.plural]}
           updateCategoryFilters={(category) => this.updateCategoryFilters(category)}
           updateCurrentRecipe={(recipe) => this.setState({ currentRecipe: recipe })}
