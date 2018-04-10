@@ -38,7 +38,7 @@ class CategoryFilter extends Component {
             className="button secondary"
             onClick={() => this.toggleFilterVisibility()}
           >
-            <span className="fa fa-filter"></span> Filter <span className="show-for-medium">{filterDescription}</span>
+            <span className="fa fa-filter"></span> <br className="hide-for-medium" />Filter <span className="show-for-medium">{filterDescription}</span>
           </a>
         }
         {filtersVisible
