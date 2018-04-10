@@ -36,10 +36,10 @@ formTabElementSpecs[recipeDescription] = new FormTabElement(
   null,
   'Short Description Of Recipe',
   true,
-  'Enter Between 50 And 250 Characters',
+  'Enter Between 25 And 150 Characters',
   FormTextarea,
   ((elementContent) => {
-    return ((elementContent.length >= 50 && elementContent.length <= 250) ? true : false);
+    return ((elementContent.length >= 25 && elementContent.length <= 150) ? true : false);
   }),
 );
 
@@ -60,7 +60,7 @@ formTabElementSpecs[recipePreparation] = new FormTabElement(
   null,
   'Recipe Preparation Step',
   true,
-  'Enter At Least 25 Characters For Each Step',
+  'Enter At Least 10 Characters For Each Step',
   FormTextInputList,
   ((elementContents) => {
     if (elementContents.length <= 0) {
@@ -69,7 +69,7 @@ formTabElementSpecs[recipePreparation] = new FormTabElement(
     else {
       let allValid = true;
       elementContents.map(elementContent => {
-        if (elementContent.length < 25) {
+        if (elementContent.length < 10) {
           allValid = false;
         }
       });

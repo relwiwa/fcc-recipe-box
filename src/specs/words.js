@@ -45,6 +45,7 @@ export const units = {
   gram: new Numerus('Gram', 'Grams'),
   liter: new Numerus('Liter', 'Liters'),
   pack: new Numerus('Pack', 'Packs'),
+  pinch: new Numerus('Pinch', 'Pinches'),
   spoon: new Numerus('Spoon', 'Spoons'),
   teaSpoon: new Numerus('Tea Spoon', 'Tea Spoons'),
 };
