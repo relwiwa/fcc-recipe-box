@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ingredientProperties } from '../specs/words';
-const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
+import DisplayRecipeIngredients from './display-recipe-ingredients';
 
 const DisplayRecipe = ({ deleteCurrentRecipe, editCurrentRecipe, recipe = {}, resetCurrentRecipe }) => {
-  const { recipeDescription, recipeIngredients, recipeTitle, recipePreparation } = recipe;
+  const { recipeDescription, recipeIngredients, recipePortions, recipePreparation, recipeTitle } = recipe;
+
+  const renderLink = (anchorText, onClick) => {
+    return (<a
+      onClick={onClick}
+      style={{color: '#d7ecfa', textDecoration: 'underline'}}
+      >
+        {anchorText}
+    </a>);
+  };
 
   return (
     <div className="display-recipe grid-x grid-margin-y align-center">
@@ -16,14 +24,10 @@ const DisplayRecipe = ({ deleteCurrentRecipe, editCurrentRecipe, recipe = {}, re
           <div className="cell">{recipeDescription}</div>
         </div>
         <hr />
-        <div className="grid-x grid-margin-x grid-margin-y">
-          <h2 className="cell"><span className="fa fa-shopping-bag"></span> Ingredients <span className="fa fa-shopping-bag"></span></h2>
-          {recipeIngredients.map((ingredient, index) => (
-            <div key={index} className="callout primary cell small-6 medium-4">
-              {ingredient[ingredientQuantity]} {ingredient[ingredientUnit]} of {ingredient[ingredientDescription]}
-            </div>
-          ))}
-        </div>
+        <DisplayRecipeIngredients
+          recipeIngredients={recipeIngredients}
+          recipePortions = {recipePortions}
+        />
         <hr />
         <div className="grid-x grid-padding-x grid-margin-x grid-margin-y">
           <h2 className="cell"><span className="fa fa-cogs"></span> Preparation <span className="fa fa-cogs"></span></h2>

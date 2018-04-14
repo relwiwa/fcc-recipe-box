@@ -1,3 +1,4 @@
+import FormNumberInput from '../reusable-components/form-number-input';
 import FormRadioInput from '../reusable-components/form-radio-input';
 import FormTextInput from '../reusable-components/form-text-input';
 import FormTextInputList from '../reusable-components/form-text-input-list';
@@ -10,12 +11,12 @@ import { ingredientProperties, recipeCategories, recipeProperties, formRecipeTab
 
 const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
 const { dessert, mainDish, salad, starter } = recipeCategories;
-const { recipeCategory, recipeDescription, recipeImage, recipeIngredients, recipePreparation, recipeTitle } = recipeProperties;
+const { recipeCategory, recipeDescription, recipeIngredients, recipePortions, recipePreparation, recipeTitle } = recipeProperties;
 const { general, ingredients, preparation } = formRecipeTabs;
 
 const formTabElementOrder = {};
 formTabElementOrder[general] = [recipeTitle, recipeDescription, recipeCategory];
-formTabElementOrder[ingredients] = [recipeIngredients];
+formTabElementOrder[ingredients] = [recipePortions, recipeIngredients];
 formTabElementOrder[preparation] = [recipePreparation];
 
 const formTabElementSpecs = {};
@@ -74,6 +75,23 @@ formTabElementSpecs[recipePreparation] = new FormTabElement(
         }
       });
       return allValid;        
+    }
+  }),
+);
+
+formTabElementSpecs[recipePortions] = new FormTabElement(
+  'How Many Portions Are The Following Ingredients For?',
+  null,
+  'Number Of Portions',
+  true,
+  'Enter A Number Greater Or Equal To 1',
+  FormNumberInput,
+  ((elementContents) => {
+    if (elementContents <= 0) {
+      return false;
+    }
+    else {
+      return true;
     }
   }),
 );
