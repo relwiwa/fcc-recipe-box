@@ -39,7 +39,6 @@ class RecipeBox extends Component {
       this.allRecipes = JSON.parse(storedRecipes);
     }
     this.setState({
-      currentRecipe: 'b0be8fbc-3c96-11e8-b467-0ed5f89f718b',
       mode: displayRecipes,
     });
   }
@@ -125,6 +124,7 @@ class RecipeBox extends Component {
         <h1 className="text-center">
           Recipe Box
         </h1>
+        {(mode === displayRecipes && currentRecipe === null) && <p className="text-center">Add and manage all of your recipes in Recipe Box</p>}
         {mode === loadRecipes && <div className="text-center">
           <span className="fa fa-spinner fa-spin"></span> Recipes Are Being Loaded...
         </div>}

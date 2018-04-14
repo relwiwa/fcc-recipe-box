@@ -18,7 +18,7 @@ const RecipeListControls = ({ currentCategoryFilters, filterDescription, recipeC
       </div>
       <div className="cell small-5 medium-3 button-group expanded">
         <a
-          className="button warning"
+          className="button success"
           onClick={() => updateMode(modes.addRecipe)}
         >
           <span className="fa fa-plus"></span><br className="show-for-small-only" /> Add Recipe
