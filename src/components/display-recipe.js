@@ -1,72 +1,94 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import DisplayRecipeIngredients from './display-recipe-ingredients';
+import ModalDialogue from '../reusable-components/modal-dialogue';
 
-const DisplayRecipe = ({ deleteCurrentRecipe, editCurrentRecipe, recipe = {}, resetCurrentRecipe }) => {
-  const { recipeDescription, recipeIngredients, recipePortions, recipePreparation, recipeTitle } = recipe;
+class DisplayRecipe extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+    };
+  }
 
-  const renderLink = (anchorText, onClick) => {
-    return (<a
-      onClick={onClick}
-      style={{color: '#d7ecfa', textDecoration: 'underline'}}
-      >
-        {anchorText}
-    </a>);
-  };
+  render () {
+    const { showModal } = this.state;
+    const { deleteCurrentRecipe, editCurrentRecipe, recipe, resetCurrentRecipe } = this.props;
+    const { recipeDescription, recipeIngredients, recipePortions, recipePreparation, recipeTitle } = recipe;
 
-  return (
-    <div className="display-recipe grid-x grid-margin-y align-center">
-      <div className="cell callout primary text-center" style={{background: '#1779ba', color: '#d7ecfa'}}>
-        <h1>{recipeTitle}</h1>
-        <hr />
-        <div className="grid-x grid-margin-y grid-margin-x align-middle align-center">
-          <div className="cell">{recipeDescription}</div>
-        </div>
-        <hr />
-        <DisplayRecipeIngredients
-          recipeIngredients={recipeIngredients}
-          recipePortions = {recipePortions}
-        />
-        <hr />
-        <div className="grid-x grid-padding-x grid-margin-x grid-margin-y">
-          <h2 className="cell"><span className="fa fa-cogs"></span> Preparation <span className="fa fa-cogs"></span></h2>
-          <div className="cell">
-            <div className="grid-x grid-margin-x grid-margin-y">
-              {recipePreparation.map((step, index) => (
-                <div key={index} className="cell medium-6 large-4 callout primary">
-                  <h4>Step {index + 1}</h4>
-                  <p>{step}</p>
+    return (
+      <Fragment>
+        {showModal && <ModalDialogue
+          closeModal={() => this.setState({ showModal: false })}
+        >
+          <div>
+            <p className="text-center">Are you sure you want to delete this recipe?</p>
+            <div className="button-group expanded stacked-for-small">
+              <a
+                className="button warning"
+                onClick={deleteCurrentRecipe}
+              >Yes, Delete Recipe</a>
+              <a
+                className="button secondary"
+                onClick={() => this.setState({ showModal: false })}
+              >No, Cancel</a>
+            </div>
+          </div>
+        </ModalDialogue>}
+        <div className="display-recipe grid-x grid-margin-y align-center">
+          <div className="cell callout primary text-center" style={{background: '#1779ba', color: '#d7ecfa'}}>
+            <h1>{recipeTitle}</h1>
+            <hr />
+            <div className="grid-x grid-margin-y grid-margin-x align-middle align-center">
+              <div className="cell">{recipeDescription}</div>
+            </div>
+            <hr />
+            <DisplayRecipeIngredients
+              recipeIngredients={recipeIngredients}
+              recipePortions = {recipePortions}
+            />
+            <hr />
+            <div className="grid-x grid-padding-x grid-margin-x grid-margin-y">
+              <h2 className="cell"><span className="fa fa-cogs"></span> Preparation <span className="fa fa-cogs"></span></h2>
+              <div className="cell">
+                <div className="grid-x grid-margin-x grid-margin-y">
+                  {recipePreparation.map((step, index) => (
+                    <div key={index} className="cell medium-6 large-4 callout primary">
+                      <h4>Step {index + 1}</h4>
+                      <p>{step}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+            </div>
+          </div>
+          <div className="cell small-11">
+            <div className="button-group align-right">
+              <a
+                className="button warning"
+                onClick={() => this.setState({ showModal: true })}
+              >
+                <span className="fa fa-trash-o"></span> Delete
+              </a>
+              <a
+                className="button secondary"
+                onClick={editCurrentRecipe}
+              >
+                <span className="fa fa-edit"></span> Edit
+              </a>
+              <a
+                className="button"
+                onClick={() => resetCurrentRecipe()}          
+              >
+                Go Back <span className="fa fa-level-up"></span>
+              </a>
             </div>
           </div>
         </div>
-      </div>
-      <div className="cell small-11">
-        <div className="button-group align-right">
-          <a
-            className="button warning"
-            onClick={deleteCurrentRecipe}
-          >
-            <span className="fa fa-trash-o"></span> Delete
-          </a>
-          <a
-            className="button secondary"
-            onClick={editCurrentRecipe}
-          >
-            <span className="fa fa-edit"></span> Edit
-          </a>
-          <a
-            className="button"
-            onClick={() => resetCurrentRecipe()}          
-          >
-            Go Back <span className="fa fa-level-up"></span>
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+      </Fragment>
+    );
+  }
 };
 
 DisplayRecipe.propTypes = {
