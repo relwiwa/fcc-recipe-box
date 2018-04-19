@@ -39,9 +39,8 @@ const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue
             </div>
             <div className="cell small-6 medium-4">
               <select
-                value={itemValues[ingredientUnit]}
+                value={itemValues[ingredientUnit].key}
                 onChange={(event) => prepareUpdatedValues(units[event.target.value], ingredientUnit, index)}
-                style={{backgroundImage: 'none'}}
               >
                 {Object.keys(units).map(key => <option
                   key={key}

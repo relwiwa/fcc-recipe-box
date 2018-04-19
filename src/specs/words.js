@@ -29,10 +29,10 @@ export const modes = {
 };
 
 export const recipeCategories = {
-  dessert: new Numerus('Dessert', 'Desserts'),
-  mainDish: new Numerus('Main Dish', 'Main Dishes'),
-  salad: new Numerus('Salad', 'Salads'),
-  starter: new Numerus('Starter', 'Starters'),
+  dessert: new Numerus('dessert', 'Dessert', 'Desserts'),
+  mainDish: new Numerus('mainDish', 'Main Dish', 'Main Dishes'),
+  salad: new Numerus('salad', 'Salad', 'Salads'),
+  starter: new Numerus('starter', 'Starter', 'Starters'),
 };
 
 export const recipeProperties = {
@@ -46,12 +46,12 @@ export const recipeProperties = {
 };
 
 export const units = {
-  bottle: new Numerus('Bottle', 'Bottles'),
-  piece: new Numerus('Piece', 'Pieces'),
-  gram: new Numerus('Gram', 'Grams'),
-  liter: new Numerus('Liter', 'Liters'),
-  pack: new Numerus('Pack', 'Packs'),
-  pinch: new Numerus('Pinch', 'Pinches'),
-  spoon: new Numerus('Spoon', 'Spoons'),
-  teaSpoon: new Numerus('Tea Spoon', 'Tea Spoons'),
+  bottle: new Numerus('bottle', 'Bottle', 'Bottles'),
+  piece: new Numerus('piece', 'Piece', 'Pieces'),
+  gram: new Numerus('gram', 'Gram', 'Grams'),
+  liter: new Numerus('liter', 'Liter', 'Liters'),
+  pack: new Numerus('pack', 'Pack', 'Packs'),
+  pinch: new Numerus('pinch', 'Pinch', 'Pinches'),
+  spoon: new Numerus('spoon', 'Spoon', 'Spoons'),
+  teaSpoon: new Numerus('teaSpoon', 'Tea Spoon', 'Tea Spoons'),
 };
