@@ -2,6 +2,11 @@ import Numerus from '../models/numerus';
 
 export const filterDescription = 'Recipes';
 
+export const formInputTypes = {
+  number: 'number',
+  text: 'text',
+};
+
 export const formRecipeTabs = {
   general: 'General',
   ingredients: 'Ingredients',

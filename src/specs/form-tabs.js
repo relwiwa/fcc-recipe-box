@@ -1,13 +1,12 @@
-import FormNumberInput from '../reusable-components/form-number-input';
+import FormInput from '../reusable-components/form-input';
 import FormRadioInput from '../reusable-components/form-radio-input';
-import FormTextInput from '../reusable-components/form-text-input';
 import FormTextInputList from '../reusable-components/form-text-input-list';
-import FormTextarea from '../reusable-components/form-text-input';
+import FormTextarea from '../reusable-components/form-textarea';
 import ManageRecipeIngredients from '../components/manage-recipe-ingredients';
 
 import FormTabElement from '../models/form-tab-element';
 import FormTabSpec from '../models/form-tab-specs';
-import { ingredientProperties, recipeCategories, recipeProperties, formRecipeTabs } from './words';
+import { formInputTypes, formRecipeTabs, ingredientProperties, recipeCategories, recipeProperties } from './words';
 
 const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
 const { dessert, mainDish, salad, starter } = recipeCategories;
@@ -21,18 +20,22 @@ formTabElementOrder[preparation] = [recipePreparation];
 
 const formTabElementSpecs = {};
 formTabElementSpecs[recipeTitle] = new FormTabElement(
+  {
+    type: formInputTypes.text,
+  },
   'What Is The Title Of Your Recipe?',
   null,
   'Recipe Title',
   true,
   'Enter At Least 5 Characters',
-  FormTextInput,
+  FormInput,
   ((elementContent) => {
     return ((elementContent.length >= 5) ? true : false);
   }),
 );
 
 formTabElementSpecs[recipeDescription] = new FormTabElement(
+  null,
   'Add A Short Description Of Your Recipe',
   null,
   'Short Description Of Recipe',
@@ -45,6 +48,7 @@ formTabElementSpecs[recipeDescription] = new FormTabElement(
 );
 
 formTabElementSpecs[recipeCategory] = new FormTabElement(
+  null,
   'Chose A Category For Your Recipe',
   [starter.plural, mainDish.plural, salad.plural, dessert.plural],
   null,
@@ -57,6 +61,7 @@ formTabElementSpecs[recipeCategory] = new FormTabElement(
 );
 
 formTabElementSpecs[recipePreparation] = new FormTabElement(
+  null,
   'List The Steps To Prepare The Dish',
   null,
   'Recipe Preparation Step',
@@ -80,12 +85,16 @@ formTabElementSpecs[recipePreparation] = new FormTabElement(
 );
 
 formTabElementSpecs[recipePortions] = new FormTabElement(
+  {
+    type: formInputTypes.number,
+    min: '1',
+  },
   'How Many Portions Are The Following Ingredients For?',
   null,
   'Number Of Portions',
   true,
   'Enter A Number Greater Or Equal To 1',
-  FormNumberInput,
+  FormInput,
   ((elementContents) => {
     if (elementContents <= 0) {
       return false;
@@ -97,6 +106,7 @@ formTabElementSpecs[recipePortions] = new FormTabElement(
 );
 
 formTabElementSpecs[recipeIngredients] = new FormTabElement(
+  null,
   'List All Of The Ingredients',
   null,
   'Recipe Ingredient',

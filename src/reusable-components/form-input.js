@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import FormElement from './form-element';
 
-const FormNumberInput = ({ legend, placeholder, requirement, updateValue, valid, value }) => {
+const FormInput = ({ attributes, legend, placeholder, requirement, updateValue, valid, value }) => {
   return (
     <FormElement
       legend={legend}
@@ -13,14 +13,15 @@ const FormNumberInput = ({ legend, placeholder, requirement, updateValue, valid,
       <input
         onChange={(event) => updateValue(event.target.value)}
         placeholder={placeholder}
-        type="number"
+        {...attributes}
         value={value}        
       />
     </FormElement>
   );
 }
 
-FormNumberInput.propTypes = {
+FormInput.propTypes = {
+  attributes: PropTypes.object,
   legend: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   requirement: PropTypes.string.isRequired,
@@ -29,4 +30,4 @@ FormNumberInput.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
-export default FormNumberInput;
+export default FormInput;
