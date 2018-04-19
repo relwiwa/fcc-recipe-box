@@ -33,8 +33,10 @@ const FormTextInputList = ({ legend, placeholder, requirement, updateValue, vali
         </div>
         <div className="cell small-3 medium-1 text-right">
           <a
-            onClick={disabled ? null : (() => removeItem(index))}
             className={'button alert' + (disabled ? ' disabled' : '')}
+            onClick={disabled ? null : (() => removeItem(index))}
+            onKeyPress={disabled ? null : (() => removeItem(index))}
+            tabIndex="0"
           ><span className="fa fa-trash-o"></span></a>
         </div>
       </div>
@@ -52,6 +54,8 @@ const FormTextInputList = ({ legend, placeholder, requirement, updateValue, vali
         <a
           className="button warning"
           onClick={() => updateValue([...value, ''])}
+          onKeyPress={() => updateValue([...value, ''])}
+          tabIndex="0"
         ><span className="fa fa-plus"></span> Add Item</a>
       </div>
     </div>

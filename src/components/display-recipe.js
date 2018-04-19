@@ -28,10 +28,14 @@ class DisplayRecipe extends Component {
               <a
                 className="button warning"
                 onClick={deleteCurrentRecipe}
+                onKeyPress={deleteCurrentRecipe}
+                tabIndex="0"
               >Yes, Delete Recipe</a>
               <a
                 className="button secondary"
                 onClick={() => this.setState({ showModal: false })}
+                onKeyPress={() => this.setState({ showModal: false })}
+                tabIndex="0"
               >No, Cancel</a>
             </div>
           </div>
@@ -68,18 +72,24 @@ class DisplayRecipe extends Component {
               <a
                 className="button warning"
                 onClick={() => this.setState({ showModal: true })}
+                onKeyPress={() => this.setState({ showModal: true })}
+                tabIndex="0"
               >
                 <span className="fa fa-trash-o"></span> Delete
               </a>
               <a
                 className="button secondary"
                 onClick={editCurrentRecipe}
+                onKeyPress={editCurrentRecipe}
+                tabIndex="0"
               >
                 <span className="fa fa-edit"></span> Edit
               </a>
               <a
                 className="button"
-                onClick={() => resetCurrentRecipe()}          
+                onClick={() => resetCurrentRecipe()}
+                onKeyPress={() => resetCurrentRecipe()}
+                tabIndex="0"
               >
                 Go Back <span className="fa fa-level-up"></span>
               </a>

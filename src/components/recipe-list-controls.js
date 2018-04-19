@@ -20,6 +20,8 @@ const RecipeListControls = ({ currentCategoryFilters, filterDescription, recipeC
         <a
           className="button success"
           onClick={() => updateMode(modes.addRecipe)}
+          onKeyPress={() => updateMode(modes.addRecipe)}
+          tabIndex="0"
         >
           <span className="fa fa-plus"></span><br className="show-for-small-only" /> Add Recipe
         </a>

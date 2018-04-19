@@ -7,6 +7,8 @@ const RecipeListItem = ({ description = '', id = '', title = '', updateCurrentRe
       className="recipe-list-item cell callout align-self-stretch text-center"
       style={{background: '#1779ba', color: '#d7ecfa', cursor: 'pointer'}}
       onClick={() => updateCurrentRecipe(id)}
+      onKeyPress={() => updateCurrentRecipe(id)}
+      tabIndex="0"
     >
       <div className="grid-x grid-margin-x grid-margin-y align-center">
         <h4 className="cell">{title}</h4>

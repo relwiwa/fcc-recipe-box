@@ -4,15 +4,11 @@ import PropTypes from 'prop-types';
 import ManageRecipe from './manage-recipe';
 
 const EditRecipe = ({ cancelEditRecipe, recipe, updateRecipe }) => {
-  return (
-    <div className="add-recipe">
-      <ManageRecipe
-        cancelFormInput={cancelEditRecipe}
-        recipe={recipe}
-        saveRecipe={updateRecipe}
-      />
-    </div>
-  );
+  return <ManageRecipe
+    cancelFormInput={cancelEditRecipe}
+    recipe={recipe}
+    saveRecipe={updateRecipe}
+  />;
 }
 
 EditRecipe.propTypes = {

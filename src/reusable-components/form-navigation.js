@@ -18,10 +18,14 @@ const FormNavigation = ({ allTabsValid, cancelFormInput, currentTab, currentTabV
           <a
             className={'button ' + ((isFirstTab || !currentTabValid) ? 'disabled' : null)}
             onClick={(isFirstTab || !currentTabValid) ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber - 1].title)}
+            onKeyPress={(isFirstTab || !currentTabValid) ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber - 1].title)}
+            tabIndex="0"
           ><span className="fa fa-angle-left"></span> Previous</a>
           <a
             className={'button ' + ((isLastTab || !currentTabValid) ? 'disabled' : null)}
             onClick={(isLastTab || !currentTabValid)  ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber + 1].title)}
+            onKeyPress={(isLastTab || !currentTabValid)  ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber + 1].title)}
+            tabIndex="0"
           >Next <span className="fa fa-angle-right"></span></a>
         </div>
       </div>
@@ -30,10 +34,14 @@ const FormNavigation = ({ allTabsValid, cancelFormInput, currentTab, currentTabV
           <a
             className="button secondary"
             onClick={cancelFormInput}
+            onKeyPress={cancelFormInput}
+            tabIndex="0"
           ><span className="fa fa-close"></span> Cancel</a>
           <a
             className={'button success' + (allTabsValid ? '' : ' disabled')}
             onClick={allTabsValid ? saveFormInput : null}
+            onKeyPress={allTabsValid ? saveFormInput : null}
+            tabIndex="0"
           ><span className="fa fa-save"></span> Save Input</a>
         </div>
       </div>

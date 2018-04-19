@@ -30,7 +30,7 @@ const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue
           <div className="grid-x grid-margin-x">
             <div className="cell small-6 medium-2">
               <input
-                min="0"
+                min="1"
                 onChange={(event) => prepareUpdatedValues(event.target.value, ingredientQuantity, index)}
                 placeholder="Quantity"
                 type="number"
@@ -62,8 +62,10 @@ const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue
         </div>
         <div className="cell small-2 large-1 align-self-middle text-right">
           <a
-            onClick={disabled ? null : (() => removeItem(index))}
             className={'button alert' + (disabled ? ' disabled' : '')}
+            onClick={disabled ? null : (() => removeItem(index))}
+            onKeyPress={disabled ? null : (() => removeItem(index))}
+            tabIndex="0"
           ><span className="fa fa-trash-o"></span></a>
         </div>
       </div>
@@ -84,6 +86,8 @@ const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue
         <a
           className="button warning"
           onClick={() => updateValue([...value, new Ingredient()])}
+          onKeyPress={() => updateValue([...value, new Ingredient()])}
+          tabIndex="0"
         ><span className="fa fa-plus"></span> Add Item</a>
       </div>
     </div>

@@ -10,7 +10,9 @@ const FormTabs = ({ currentTab, currentTabValid, formTabSpecs, updateCurrentTab 
             className={'button ' + (tab.title === currentTab ? '' : 'disabled')}
             key={tab.title}
             onClick={(tab.title === currentTab || !currentTabValid) ? null : () => updateCurrentTab(tab.title)}
+            onKeyPress={(tab.title === currentTab || !currentTabValid) ? null : () => updateCurrentTab(tab.title)}
             style={currentTabValid ? { cursor: 'pointer' } : null }
+            tabIndex="0"
           >
             <span className={'fa ' + tab.icon}></span><br className="hide-for-medium" /> {tab.title}
           </a>

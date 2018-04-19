@@ -28,7 +28,9 @@ class CategoryFilter extends Component {
             className={'button secondary' + (categoryIsFiltered ? ' disabled' : '')}
             key={category}
             onClick={() => updateCategoryFilters(category)}
+            onKeyPress={() => updateCategoryFilters(category)}
             style={{cursor: 'pointer'}}
+            tabIndex="0"
           >
             {category}
           </a>;
@@ -37,6 +39,8 @@ class CategoryFilter extends Component {
           && <a
             className="button secondary"
             onClick={() => this.toggleFilterVisibility()}
+            onKeyPress={() => this.toggleFilterVisibility()}
+            tabIndex="0"
           >
             <span className="fa fa-filter"></span> <br className="hide-for-medium" />Filter <span className="show-for-medium">{filterDescription}</span>
           </a>
@@ -45,6 +49,8 @@ class CategoryFilter extends Component {
           && <a
             className="button secondary"
             onClick={() => this.toggleFilterVisibility()}
+            onKeyPress={() => this.toggleFilterVisibility()}            
+            tabIndex="0"
           >
             Hide Filters <span className="fa fa-level-up"></span>
           </a>

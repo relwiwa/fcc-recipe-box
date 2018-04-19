@@ -6,15 +6,11 @@ import Recipe from '../models/recipe';
 import ManageRecipe from './manage-recipe';
 
 const AddRecipe = ({ addRecipe, cancelAddRecipe }) => {
-  return (
-    <div className="add-recipe">
-      <ManageRecipe
-        cancelFormInput={cancelAddRecipe}
-        recipe={new Recipe(null, '', null, '', '', [new Ingredient()], [''])}
-        saveRecipe={addRecipe}
-      />
-    </div>
-  );
+  return <ManageRecipe
+    cancelFormInput={cancelAddRecipe}
+    recipe={new Recipe(null, '', null, '', '', [new Ingredient()], [''])}
+    saveRecipe={addRecipe}
+  />;
 }
 
 AddRecipe.propTypes = {

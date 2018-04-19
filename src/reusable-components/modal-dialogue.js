@@ -29,6 +29,8 @@ const ModalDialogue = ({ children, closeModal }) => {
         <button
           className="close-button"
           onClick={closeModal}
+          onKeyPress={closeModal}
+          tabIndex="0"
           type="button"
         >
           <span aria-hidden="true">&times;</span>

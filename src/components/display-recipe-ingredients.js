@@ -27,7 +27,10 @@ class DisplayRecipeIngredients extends Component {
     return (<span
       className={`fa ${faClass}`}
       onClick={onClickFunction}
-      style={{color: '#d7ecfa', background: '#1779ba', cursor: cursorValue}}></span>);
+      onKeyPress={onClickFunction}
+      style={{color: '#d7ecfa', background: '#1779ba', cursor: cursorValue}}
+      tabIndex="0"
+    ></span>);
   }
 
   renderIngredient(quantity, unit, description) {
