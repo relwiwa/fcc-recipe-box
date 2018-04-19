@@ -5,6 +5,7 @@ import FormElement from '../reusable-components/form-element';
 
 import { ingredientProperties, units } from '../specs/words';
 import Ingredient from '../models/ingredient';
+import Numerus from '../models/numerus';
 
 const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
 
@@ -39,7 +40,7 @@ const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue
             <div className="cell small-6 medium-4">
               <select
                 value={itemValues[ingredientUnit]}
-                onChange={(event) => prepareUpdatedValues(event.target.value, ingredientUnit, index)}
+                onChange={(event) => prepareUpdatedValues(units[event.target.value], ingredientUnit, index)}
                 style={{backgroundImage: 'none'}}
               >
                 {Object.keys(units).map(key => <option
