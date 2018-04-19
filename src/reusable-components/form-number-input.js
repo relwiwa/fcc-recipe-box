@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import FormElement from './form-element';
 
-const FormNumberInput = ({ label, placeholder, requirement, updateValue, valid, value }) => {
+const FormNumberInput = ({ legend, placeholder, requirement, updateValue, valid, value }) => {
   return (
     <FormElement
-      label={label}
+      legend={legend}
       requirement={requirement}
       valid={valid}
     >
@@ -21,7 +21,7 @@ const FormNumberInput = ({ label, placeholder, requirement, updateValue, valid, 
 }
 
 FormNumberInput.propTypes = {
-  label: PropTypes.string.isRequired,
+  legend: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   requirement: PropTypes.string.isRequired,
   updateValue: PropTypes.func.isRequired,

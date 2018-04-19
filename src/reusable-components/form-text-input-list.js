@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import FormElement from './form-element';
 
-const FormTextInputList = ({ label, placeholder, requirement, updateValue, valid, value }) => {
+const FormTextInputList = ({ legend, placeholder, requirement, updateValue, valid, value }) => {
   const prepareUpdatedValues = (newValue, index) => {
     const newValues = [...value];
     newValues[index] = newValue;
@@ -41,27 +41,25 @@ const FormTextInputList = ({ label, placeholder, requirement, updateValue, valid
     );
   }
 
-  return <Fragment>
-    <FormElement
-      label={label}
-      requirement={requirement}
-      valid={valid}
-    >
-      {value.map((item, index) => renderInputListItem(index, item, value.length <= 1 ? true : false))}
-    </FormElement>
+  return <FormElement
+    legend={legend}
+    requirement={requirement}
+    valid={valid}
+  >
+    {value.map((item, index) => renderInputListItem(index, item, value.length <= 1 ? true : false))}
     <div className="grid-x grid-padding-x">
-      <div className="cell text-right">
+      <div className="cell">
         <a
           className="button warning"
           onClick={() => updateValue([...value, ''])}
         ><span className="fa fa-plus"></span> Add Item</a>
       </div>
     </div>
-  </Fragment>;
+  </FormElement>;
 }
 
 FormTextInputList.propTypes = {
-  label: PropTypes.string.isRequired,
+  legend: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   requirement: PropTypes.string.isRequired,
   updateValue: PropTypes.func.isRequired,

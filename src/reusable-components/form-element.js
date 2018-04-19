@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import FormElementRequirement from './form-element-requirement';
 
-const FormElement = ({ children, label, requirement, valid }) => {
+const FormElement = ({ children, legend, requirement, valid }) => {
   return (
     <div className="form-element">
-      <label style={{fontSize: '16px'}}>
-        {label}
+      <fieldset className="fieldset">
+      <legend>{legend}</legend>
         {children}
-      </label>
+      </fieldset>
       <FormElementRequirement
         requirement={requirement}
         valid={valid}
@@ -20,7 +20,7 @@ const FormElement = ({ children, label, requirement, valid }) => {
 
 FormElement.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
-  label: PropTypes.string.isRequired,
+  legend: PropTypes.string.isRequired,
   requirement: PropTypes.string.isRequired,
   valid: PropTypes.oneOf([true, false, null]),  
 };

@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import FormElement from './form-element';
 import FormElementRequirement from './form-element-requirement';
 
-const FormRadioInput = ({ label, options, requirement, updateValue, valid, value }) => {
+const FormRadioInput = ({ legend, options, requirement, updateValue, valid, value }) => {
   return <Fragment>
     <fieldset className="fieldset">
-      <legend>{label}</legend>
+      <legend>{legend}</legend>
       {options.map(option => {
         return <Fragment key={option}>
           <input
@@ -28,7 +28,7 @@ const FormRadioInput = ({ label, options, requirement, updateValue, valid, value
 }
 
 FormRadioInput.propTypes = {
-  label: PropTypes.string.isRequired,
+  legend: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   requirement: PropTypes.string.isRequired,
   updateValue: PropTypes.func.isRequired,

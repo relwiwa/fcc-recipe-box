@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import FormElement from '../reusable-components/form-element';
@@ -8,7 +8,7 @@ import Ingredient from '../models/ingredient';
 
 const { ingredientDescription, ingredientQuantity, ingredientUnit } = ingredientProperties;
 
-const ManageRecipeIngredients = ({ label, placeholder, requirement, updateValue, valid, value }) => {
+const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue, valid, value }) => {
   const prepareUpdatedValues = (newValue, itemProperty, index) => {
     const newValues = [...value];
     newValues[index][itemProperty] = newValue;
@@ -70,30 +70,28 @@ const ManageRecipeIngredients = ({ label, placeholder, requirement, updateValue,
     );
   };
 
-  return <Fragment>
-    <FormElement
-      label={label}
-      requirement={requirement}
-      valid={valid}
-    >
-      {value.map((item, index) => {
-        const disabled = value.length === 1 ? true : false;
-        return renderInputListItem(index, item, disabled);
-      })}
-    </FormElement>
+  return <FormElement
+    legend={legend}
+    requirement={requirement}
+    valid={valid}
+  >
+    {value.map((item, index) => {
+      const disabled = value.length === 1 ? true : false;
+      return renderInputListItem(index, item, disabled);
+    })}
     <div className="grid-x grid-padding-x">
-      <div className="cell text-right">
+      <div className="cell">
         <a
           className="button warning"
           onClick={() => updateValue([...value, new Ingredient()])}
-        ><span className="fa fa-plus"></span> Add</a>
+        ><span className="fa fa-plus"></span> Add Item</a>
       </div>
     </div>
-  </Fragment>;
+  </FormElement>;
 }
 
 ManageRecipeIngredients.propTypes = {
-  label: PropTypes.string.isRequired,
+  legend: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   requirement: PropTypes.string.isRequired,
   updateValue: PropTypes.func.isRequired,
