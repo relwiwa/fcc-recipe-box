@@ -2,12 +2,13 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import FormElement from './form-element';
-import FormElementRequirement from './form-element-requirement';
 
 const FormRadioInput = ({ legend, options, requirement, updateValue, valid, value }) => {
-  return <Fragment>
-    <fieldset className="fieldset">
-      <legend>{legend}</legend>
+  return <FormElement
+      legend={legend}
+      requirement={requirement}
+      valid={valid}
+    >
       {options.map(option => {
         return <Fragment key={option}>
           <input
@@ -19,12 +20,7 @@ const FormRadioInput = ({ legend, options, requirement, updateValue, valid, valu
           <label htmlFor={option}>{option}</label>
         </Fragment>
       })}
-    </fieldset>
-    <FormElementRequirement
-      requirement={requirement}
-      valid={valid}
-    />
-  </Fragment>;
+    </FormElement>;
 }
 
 FormRadioInput.propTypes = {
