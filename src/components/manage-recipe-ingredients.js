@@ -41,6 +41,7 @@ const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue
               <select
                 value={itemValues[ingredientUnit].key}
                 onChange={(event) => prepareUpdatedValues(units[event.target.value], ingredientUnit, index)}
+                style={{background: 'none'}}
               >
                 {Object.keys(units).map(key => <option
                   key={key}
@@ -92,7 +93,7 @@ const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue
       </div>
     </div>
   </FormElement>;
-}
+};
 
 ManageRecipeIngredients.propTypes = {
   legend: PropTypes.string.isRequired,

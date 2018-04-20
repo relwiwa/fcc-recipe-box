@@ -47,7 +47,7 @@ const FormNavigation = ({ allTabsValid, cancelFormInput, currentTab, currentTabV
       </div>
     </div>
   );
-}
+};
 
 FormNavigation.propTypes = {
   allTabsValid: PropTypes.bool.isRequired,

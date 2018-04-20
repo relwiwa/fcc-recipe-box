@@ -4,21 +4,19 @@ import PropTypes from 'prop-types';
 import FormElement from './form-element';
 
 const FormTextarea = ({ legend, placeholder, requirement, updateValue, valid, value }) => {
-  return (
-    <FormElement
-      legend={legend}
-      requirement={requirement}
-      valid={valid}
-    >
-      <textarea
-        onChange={(event) => updateValue(event.target.value)}
-        placeholder={placeholder}
-        type="textarea"
-        value={value}
-      />
-    </FormElement>
-  );
-}
+  return <FormElement
+    legend={legend}
+    requirement={requirement}
+    valid={valid}
+  >
+    <textarea
+      onChange={(event) => updateValue(event.target.value)}
+      placeholder={placeholder}
+      type="textarea"
+      value={value}
+    />
+  </FormElement>
+};
 
 FormTextarea.propTypes = {
   legend: PropTypes.string.isRequired,

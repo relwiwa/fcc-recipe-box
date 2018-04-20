@@ -21,7 +21,7 @@ const FormRadioInput = ({ legend, options, requirement, updateValue, valid, valu
         </Fragment>
       })}
     </FormElement>;
-}
+};
 
 FormRadioInput.propTypes = {
   legend: PropTypes.string.isRequired,

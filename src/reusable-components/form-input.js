@@ -18,7 +18,7 @@ const FormInput = ({ attributes, legend, placeholder, requirement, updateValue, 
       />
     </FormElement>
   );
-}
+};
 
 FormInput.propTypes = {
   attributes: PropTypes.object,

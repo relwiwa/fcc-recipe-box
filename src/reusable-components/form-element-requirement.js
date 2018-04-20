@@ -14,7 +14,7 @@ const FormElementRequirement = ({ requirement, valid }) => {
   return (
     <p className="help-text"><span className={'fa ' + renderValidIcon(valid)}></span> {requirement}</p>
   );
-}
+};
 
 FormElementRequirement.propTypes = {
   requirement: PropTypes.string.isRequired,

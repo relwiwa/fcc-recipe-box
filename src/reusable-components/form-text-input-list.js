@@ -17,31 +17,29 @@ const FormTextInputList = ({ legend, placeholder, requirement, updateValue, vali
   };
 
   const renderInputListItem = (index, itemValue, disabled) => {
-    return (
-      <div className="grid-x" key={index}>
-        <div className="cell small-9 medium-11">
-          <div className="input-group">
-            <span className="input-group-label">{index + 1}</span>
-            <input
-              className="input-group-field"
-              onChange={(event) => prepareUpdatedValues(event.target.value, index)}
-              placeholder={placeholder}
-              type="text"
-              value={itemValue}
-            />
-          </div>
-        </div>
-        <div className="cell small-3 medium-1 text-right">
-          <a
-            className={'button alert' + (disabled ? ' disabled' : '')}
-            onClick={disabled ? null : (() => removeItem(index))}
-            onKeyPress={disabled ? null : (() => removeItem(index))}
-            tabIndex="0"
-          ><span className="fa fa-trash-o"></span></a>
+    return <div className="grid-x" key={index}>
+      <div className="cell small-9 medium-11">
+        <div className="input-group">
+          <span className="input-group-label">{index + 1}</span>
+          <input
+            className="input-group-field"
+            onChange={(event) => prepareUpdatedValues(event.target.value, index)}
+            placeholder={placeholder}
+            type="text"
+            value={itemValue}
+          />
         </div>
       </div>
-    );
-  }
+      <div className="cell small-3 medium-1 text-right">
+        <a
+          className={'button alert' + (disabled ? ' disabled' : '')}
+          onClick={disabled ? null : (() => removeItem(index))}
+          onKeyPress={disabled ? null : (() => removeItem(index))}
+          tabIndex="0"
+        ><span className="fa fa-trash-o"></span></a>
+      </div>
+    </div>
+  };
 
   return <FormElement
     legend={legend}

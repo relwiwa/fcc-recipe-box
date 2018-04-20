@@ -11,7 +11,7 @@ const AddRecipe = ({ addRecipe, cancelAddRecipe }) => {
     recipe={new Recipe(null, '', null, '', '', [new Ingredient()], [''])}
     saveRecipe={addRecipe}
   />;
-}
+};
 
 AddRecipe.propTypes = {
   addRecipe: PropTypes.func.isRequired,
