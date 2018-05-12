@@ -1,8 +1,8 @@
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import CategoryFilter from '../../../reusable-components/category-filter';
+import IconButton from '../../../reusable-components/icon-button';
 
 import { modes } from '../specs/words';
 
@@ -18,14 +18,14 @@ const RecipeListControls = ({ currentCategoryFilters, filterDescription, recipeC
         />
       </div>
       <div className="cell small-5 medium-3 button-group expanded">
-        <a
-          className="button success"
+        <IconButton
+          faIcon="plus"
+          foundationClass="success"
           onClick={() => updateMode(modes.addRecipe)}
           onKeyPress={() => updateMode(modes.addRecipe)}
           tabIndex="0"
-        >
-          <FontAwesomeIcon icon="plus" /><br className="show-for-small-only" /> Add Recipe
-        </a>
+          text={<Fragment><br className="show-for-small-only" /> Add Recipe</Fragment>}
+        />
       </div>
     </div>
   );

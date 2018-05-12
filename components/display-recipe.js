@@ -2,6 +2,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import IconButton from '../../../reusable-components/icon-button';
 import DisplayRecipeIngredients from './display-recipe-ingredients';
 import ModalDialogue from '../../../reusable-components/modal-dialogue';
 
@@ -70,30 +71,30 @@ class DisplayRecipe extends Component {
           </div>
           <div className="cell small-11">
             <div className="button-group align-right">
-              <a
-                className="button warning"
+              <IconButton
+                faIcon="trash"
+                foundationClass="warning"
                 onClick={() => this.setState({ showModal: true })}
                 onKeyPress={() => this.setState({ showModal: true })}
                 tabIndex="0"
-              >
-                <FontAwesomeIcon icon="trash" /> Delete
-              </a>
-              <a
-                className="button secondary"
+                text="Delete"
+              />
+              <IconButton
+                faIcon="edit"
+                foundationClass="secondary"
                 onClick={editCurrentRecipe}
                 onKeyPress={editCurrentRecipe}
                 tabIndex="0"
-              >
-                <FontAwesomeIcon icon="edit" /> Edit
-              </a>
-              <a
-                className="button"
+                text="Edit"
+              />
+              <IconButton
+                faIcon="level-up-alt"
+                foundationClass="primary"
                 onClick={() => resetCurrentRecipe()}
                 onKeyPress={() => resetCurrentRecipe()}
                 tabIndex="0"
-              >
-                Go Back <FontAwesomeIcon icon="level-up-alt" />
-              </a>
+                text="Go Back"
+              />
             </div>
           </div>
         </div>
