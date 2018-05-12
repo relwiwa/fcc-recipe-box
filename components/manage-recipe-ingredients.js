@@ -2,7 +2,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FormElement from '../reusable-components/form-element';
+import FormElement from '../../../reusable-components/form-container/form-element';
 
 import { ingredientProperties, units } from '../specs/words';
 import Ingredient from '../models/ingredient';

@@ -1,7 +1,7 @@
-import FormInput from '../reusable-components/form-input';
-import FormRadioInput from '../reusable-components/form-radio-input';
-import FormTextInputList from '../reusable-components/form-text-input-list';
-import FormTextarea from '../reusable-components/form-textarea';
+import FormInput from '../../../reusable-components/form-container/form-input';
+import FormRadioInput from '../../../reusable-components/form-container/form-radio-input';
+import FormTextInputList from '../../../reusable-components/form-container/form-text-input-list';
+import FormTextarea from '../../../reusable-components/form-container/form-textarea';
 import ManageRecipeIngredients from '../components/manage-recipe-ingredients';
 
 import FormTabElement from '../models/form-tab-element';

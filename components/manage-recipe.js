@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import FormContainer from '../reusable-components/form-container';
+import FormContainer from '../../../reusable-components/form-container/form-container';
 
 import { formTabElementOrder, formTabElementSpecs, formTabSpecs } from '../specs/form-tabs';
 

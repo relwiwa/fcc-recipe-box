@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import DisplayRecipeIngredients from './display-recipe-ingredients';
-import ModalDialogue from '../reusable-components/modal-dialogue';
+import ModalDialogue from '../../../reusable-components/modal-dialogue';
 
 class DisplayRecipe extends Component {
   constructor(props) {
