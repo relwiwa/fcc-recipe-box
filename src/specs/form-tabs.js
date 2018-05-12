@@ -137,9 +137,9 @@ formTabElementSpecs[recipeIngredients] = new FormTabElement(
 );
 
 const formTabSpecs = [
-  new FormTabSpec(general, 'fa-info'),
-  new FormTabSpec(ingredients, 'fa-shopping-bag'),
-  new FormTabSpec(preparation, 'fa-cogs'),
+  new FormTabSpec(general, 'info'),
+  new FormTabSpec(ingredients, 'shopping-bag'),
+  new FormTabSpec(preparation, 'cogs'),
 ];
 
 export { formTabElementOrder, formTabElementSpecs, formTabSpecs };

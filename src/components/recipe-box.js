@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 import uuidv1 from 'uuid/v1';
 
@@ -126,7 +127,7 @@ class RecipeBox extends Component {
         </h1>
         {(mode === displayRecipes && currentRecipe === null) && <p className="text-center">Add and manage all of your recipes in Recipe Box</p>}
         {mode === loadRecipes && <div className="text-center">
-          <span className="fa fa-spinner fa-spin"></span> Recipes Are Being Loaded...
+          <FontAwesomeIcon icon="spinner" spin /> Recipes Are Being Loaded...
         </div>}
         {(currentRecipe && mode === displayRecipes) && <DisplayRecipe
           deleteCurrentRecipe={() => this.deleteCurrentRecipe()}

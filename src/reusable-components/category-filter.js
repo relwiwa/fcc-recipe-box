@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -42,7 +43,7 @@ class CategoryFilter extends Component {
             onKeyPress={() => this.toggleFilterVisibility()}
             tabIndex="0"
           >
-            <span className="fa fa-filter"></span> <br className="hide-for-medium" />Filter <span className="show-for-medium">{filterDescription}</span>
+            <FontAwesomeIcon icon="filter" /> <br className="hide-for-medium" />Filter <span className="show-for-medium">{filterDescription}</span>
           </a>
         }
         {filtersVisible
@@ -52,7 +53,7 @@ class CategoryFilter extends Component {
             onKeyPress={() => this.toggleFilterVisibility()}            
             tabIndex="0"
           >
-            Hide Filters <span className="fa fa-level-up"></span>
+            Hide Filters <FontAwesomeIcon icon="level-up-alt" />
           </a>
         }
       </div>

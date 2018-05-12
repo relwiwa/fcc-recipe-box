@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -24,13 +25,13 @@ class DisplayRecipeIngredients extends Component {
 
   renderChangePortionButton(faClass, onClickFunction) {
     const cursorValue = onClickFunction === null ? null : 'pointer';
-    return (<span
-      className={`fa ${faClass}`}
+    return <FontAwesomeIcon
+      icon={faClass}
       onClick={onClickFunction}
       onKeyPress={onClickFunction}
       style={{color: '#d7ecfa', background: '#1779ba', cursor: cursorValue}}
       tabIndex="0"
-    ></span>);
+    />;
   }
 
   renderIngredient(quantity, unit, description) {
@@ -49,9 +50,9 @@ class DisplayRecipeIngredients extends Component {
 
     return (
       <div className="grid-x grid-margin-x grid-margin-y">      
-        <h2 className="cell"><span className="fa fa-shopping-bag"></span> Ingredients <span className="fa fa-shopping-bag"></span></h2>
+        <h2 className="cell"><FontAwesomeIcon icon="shopping-bag" /> Ingredients <FontAwesomeIcon icon="shopping-bag" /></h2>
         <h4 className="cell">
-          {this.renderChangePortionButton('fa-minus-circle', currentPortions > 1 ? () => this.decrementPortion() : null)} {currentPortions} Portion{currentPortions > 1 ? 's' : null} {this.renderChangePortionButton('fa-plus-circle', () => this.incrementPortion())}
+          {this.renderChangePortionButton('minus-circle', currentPortions > 1 ? () => this.decrementPortion() : null)} {currentPortions} Portion{currentPortions > 1 ? 's' : null} {this.renderChangePortionButton('plus-circle', () => this.incrementPortion())}
         </h4>
         {recipeIngredients.map((ingredient, index) => (
           <div key={index} className="callout primary cell small-6 medium-4">

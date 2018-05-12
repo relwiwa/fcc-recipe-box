@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
@@ -54,7 +55,7 @@ class DisplayRecipe extends Component {
             />
             <hr />
             <div className="grid-x grid-padding-x grid-margin-x grid-margin-y">
-              <h2 className="cell"><span className="fa fa-cogs"></span> Preparation <span className="fa fa-cogs"></span></h2>
+              <h2 className="cell"><FontAwesomeIcon icon="cogs" /> Preparation <FontAwesomeIcon icon="cogs" /></h2>
               <div className="cell">
                 <div className="grid-x grid-margin-x grid-margin-y">
                   {recipePreparation.map((step, index) => (
@@ -75,7 +76,7 @@ class DisplayRecipe extends Component {
                 onKeyPress={() => this.setState({ showModal: true })}
                 tabIndex="0"
               >
-                <span className="fa fa-trash-o"></span> Delete
+                <FontAwesomeIcon icon="trash" /> Delete
               </a>
               <a
                 className="button secondary"
@@ -83,7 +84,7 @@ class DisplayRecipe extends Component {
                 onKeyPress={editCurrentRecipe}
                 tabIndex="0"
               >
-                <span className="fa fa-edit"></span> Edit
+                <FontAwesomeIcon icon="edit" /> Edit
               </a>
               <a
                 className="button"
@@ -91,7 +92,7 @@ class DisplayRecipe extends Component {
                 onKeyPress={() => resetCurrentRecipe()}
                 tabIndex="0"
               >
-                Go Back <span className="fa fa-level-up"></span>
+                Go Back <FontAwesomeIcon icon="level-up-alt" />
               </a>
             </div>
           </div>

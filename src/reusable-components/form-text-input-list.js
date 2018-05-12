@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -36,7 +37,7 @@ const FormTextInputList = ({ legend, placeholder, requirement, updateValue, vali
           onClick={disabled ? null : (() => removeItem(index))}
           onKeyPress={disabled ? null : (() => removeItem(index))}
           tabIndex="0"
-        ><span className="fa fa-trash-o"></span></a>
+        ><FontAwesomeIcon icon="trash" /></a>
       </div>
     </div>
   };
@@ -54,7 +55,7 @@ const FormTextInputList = ({ legend, placeholder, requirement, updateValue, vali
           onClick={() => updateValue([...value, ''])}
           onKeyPress={() => updateValue([...value, ''])}
           tabIndex="0"
-        ><span className="fa fa-plus"></span> Add Item</a>
+        ><FontAwesomeIcon icon="plus" /> Add Item</a>
       </div>
     </div>
   </FormElement>;

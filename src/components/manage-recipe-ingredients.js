@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -67,7 +68,7 @@ const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue
             onClick={disabled ? null : (() => removeItem(index))}
             onKeyPress={disabled ? null : (() => removeItem(index))}
             tabIndex="0"
-          ><span className="fa fa-trash-o"></span></a>
+          ><FontAwesomeIcon icon="trash" /></a>
         </div>
       </div>
     );
@@ -89,7 +90,7 @@ const ManageRecipeIngredients = ({ legend, placeholder, requirement, updateValue
           onClick={() => updateValue([...value, new Ingredient()])}
           onKeyPress={() => updateValue([...value, new Ingredient()])}
           tabIndex="0"
-        ><span className="fa fa-plus"></span> Add Item</a>
+        ><FontAwesomeIcon icon="plus" /> Add Item</a>
       </div>
     </div>
   </FormElement>;

@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,7 +15,7 @@ const FormTabs = ({ currentTab, currentTabValid, formTabSpecs, updateCurrentTab 
             style={currentTabValid ? { cursor: 'pointer' } : null }
             tabIndex="0"
           >
-            <span className={'fa ' + tab.icon}></span><br className="hide-for-medium" /> {tab.title}
+            <FontAwesomeIcon icon={tab.icon} /><br className="hide-for-medium" /> {tab.title}
           </a>
         ))}
       </div>

@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -23,7 +24,7 @@ const RecipeListControls = ({ currentCategoryFilters, filterDescription, recipeC
           onKeyPress={() => updateMode(modes.addRecipe)}
           tabIndex="0"
         >
-          <span className="fa fa-plus"></span><br className="show-for-small-only" /> Add Recipe
+          <FontAwesomeIcon icon="plus" /><br className="show-for-small-only" /> Add Recipe
         </a>
       </div>
     </div>

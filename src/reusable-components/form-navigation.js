@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -20,13 +21,13 @@ const FormNavigation = ({ allTabsValid, cancelFormInput, currentTab, currentTabV
             onClick={(isFirstTab || !currentTabValid) ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber - 1].title)}
             onKeyPress={(isFirstTab || !currentTabValid) ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber - 1].title)}
             tabIndex="0"
-          ><span className="fa fa-angle-left"></span> Previous</a>
+          ><FontAwesomeIcon icon="angle-left" /> Previous</a>
           <a
             className={'button ' + ((isLastTab || !currentTabValid) ? 'disabled' : null)}
             onClick={(isLastTab || !currentTabValid)  ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber + 1].title)}
             onKeyPress={(isLastTab || !currentTabValid)  ? null : () => updateCurrentTab(formTabSpecs[currentTabNumber + 1].title)}
             tabIndex="0"
-          >Next <span className="fa fa-angle-right"></span></a>
+          >Next <FontAwesomeIcon icon="angle-right" /></a>
         </div>
       </div>
       <div className="cell medium-6">
@@ -36,13 +37,13 @@ const FormNavigation = ({ allTabsValid, cancelFormInput, currentTab, currentTabV
             onClick={cancelFormInput}
             onKeyPress={cancelFormInput}
             tabIndex="0"
-          ><span className="fa fa-close"></span> Cancel</a>
+          ><FontAwesomeIcon icon="times" /> Cancel</a>
           <a
             className={'button success' + (allTabsValid ? '' : ' disabled')}
             onClick={allTabsValid ? saveFormInput : null}
             onKeyPress={allTabsValid ? saveFormInput : null}
             tabIndex="0"
-          ><span className="fa fa-save"></span> Save Input</a>
+          ><FontAwesomeIcon icon="save" /> Save Input</a>
         </div>
       </div>
     </div>

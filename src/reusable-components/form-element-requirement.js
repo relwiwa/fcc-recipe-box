@@ -1,3 +1,4 @@
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,12 +8,12 @@ const FormElementRequirement = ({ requirement, valid }) => {
       return null
     }
     else {
-      return 'fa ' + (valid === true ? 'fa-check-square-o' : 'fa-square-o');
+      return valid === true ? 'check-square' : 'square';
     }
   };
 
   return (
-    <p className="help-text"><span className={'fa ' + renderValidIcon(valid)}></span> {requirement}</p>
+    <p className="help-text"><FontAwesomeIcon icon={['far', renderValidIcon(valid)]} /> {requirement}</p>
   );
 };
 
