@@ -1,8 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+import '../../global-styles.scss';
+import '../../config/font-awesome';
+
 import RecipeBox from './components/recipe-box';
-import './global-styles.scss';
 
 render(
   <RecipeBox />,
