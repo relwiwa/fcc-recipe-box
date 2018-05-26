@@ -1,0 +1,7 @@
+@import '../../../styles/color-scheme.scss';
+
+.recipe-list-item {
+  background: $primaryColor;
+  color: $textColorLight;
+  cursor: pointer;
+}

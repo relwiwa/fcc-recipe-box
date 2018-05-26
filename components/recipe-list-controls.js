@@ -20,7 +20,7 @@ const RecipeListControls = ({ currentCategoryFilters, filterDescription, recipeC
       <div className="cell small-5 medium-3 button-group expanded">
         <IconButton
           faIcon="plus"
-          foundationClass="success"
+          foundationClass="warning"
           onClick={() => updateMode(modes.addRecipe)}
           onKeyPress={() => updateMode(modes.addRecipe)}
           tabIndex="0"

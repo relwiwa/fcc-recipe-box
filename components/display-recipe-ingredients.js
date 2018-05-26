@@ -29,7 +29,7 @@ class DisplayRecipeIngredients extends Component {
       icon={faClass}
       onClick={onClickFunction}
       onKeyPress={onClickFunction}
-      style={{color: '#d7ecfa', background: '#1779ba', cursor: cursorValue}}
+      style={{cursor: cursorValue}}
       tabIndex="0"
     />;
   }
@@ -49,16 +49,20 @@ class DisplayRecipeIngredients extends Component {
     const { currentPortions } = this.state;
 
     return (
-      <div className="grid-x grid-margin-x grid-margin-y">      
+      <div className="grid-x grid-padding-x grid-margin-x grid-margin-y">      
         <h2 className="cell"><FontAwesomeIcon icon="shopping-bag" /> Ingredients <FontAwesomeIcon icon="shopping-bag" /></h2>
         <h4 className="cell">
           {this.renderChangePortionButton('minus-circle', currentPortions > 1 ? () => this.decrementPortion() : null)} {currentPortions} Portion{currentPortions > 1 ? 's' : null} {this.renderChangePortionButton('plus-circle', () => this.incrementPortion())}
         </h4>
-        {recipeIngredients.map((ingredient, index) => (
-          <div key={index} className="callout primary cell small-6 medium-4">
-            {this.renderIngredient(ingredient[ingredientQuantity], ingredient[ingredientUnit], ingredient[ingredientDescription])}
+        <div className="cell">
+          <div className="grid-x grid-margin-x grid-margin-y">
+            {recipeIngredients.map((ingredient, index) => (
+              <div key={index} className="callout cell small-6 medium-4">
+                {this.renderIngredient(ingredient[ingredientQuantity], ingredient[ingredientUnit], ingredient[ingredientDescription])}
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     );
   }

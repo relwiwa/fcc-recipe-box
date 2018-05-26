@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/recipe-list-item.scss';
+
 const RecipeListItem = ({ description = '', id = '', title = '', updateCurrentRecipe }) => {
   return (
     <div
       className="recipe-list-item cell callout align-self-stretch text-center"
-      style={{background: '#1779ba', color: '#d7ecfa', cursor: 'pointer'}}
       onClick={() => updateCurrentRecipe(id)}
       onKeyPress={() => updateCurrentRecipe(id)}
       tabIndex="0"

@@ -6,6 +6,8 @@ import IconButton from '../../../reusable-components/icon-button';
 import DisplayRecipeIngredients from './display-recipe-ingredients';
 import ModalDialogue from '../../../reusable-components/modal-dialogue';
 
+import '../styles/display-recipe.scss';
+
 class DisplayRecipe extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ class DisplayRecipe extends Component {
             <p className="text-center">Are you sure you want to delete this recipe?</p>
             <div className="button-group expanded stacked-for-small">
               <a
-                className="button warning"
+                className="button alert"
                 onClick={deleteCurrentRecipe}
                 onKeyPress={deleteCurrentRecipe}
                 tabIndex="0"
@@ -42,8 +44,8 @@ class DisplayRecipe extends Component {
             </div>
           </div>
         </ModalDialogue>}
-        <div className="display-recipe grid-x grid-margin-y align-center">
-          <div className="cell callout primary text-center" style={{background: '#1779ba', color: '#d7ecfa'}}>
+        <div className="display-recipe grid-x grid-margin-y grid-padding-y align-center">
+          <div className="cell text-center">
             <h1>{recipeTitle}</h1>
             <hr />
             <div className="grid-x grid-margin-y grid-margin-x align-middle align-center">
@@ -60,7 +62,7 @@ class DisplayRecipe extends Component {
               <div className="cell">
                 <div className="grid-x grid-margin-x grid-margin-y">
                   {recipePreparation.map((step, index) => (
-                    <div key={index} className="cell medium-6 large-4 callout primary">
+                    <div key={index} className="cell medium-6 large-4 callout">
                       <h4>Step {index + 1}</h4>
                       <p>{step}</p>
                     </div>
@@ -73,7 +75,7 @@ class DisplayRecipe extends Component {
             <div className="button-group align-right">
               <IconButton
                 faIcon="trash"
-                foundationClass="warning"
+                foundationClass="alert"
                 onClick={() => this.setState({ showModal: true })}
                 onKeyPress={() => this.setState({ showModal: true })}
                 tabIndex="0"
@@ -89,7 +91,7 @@ class DisplayRecipe extends Component {
               />
               <IconButton
                 faIcon="level-up-alt"
-                foundationClass="primary"
+                foundationClass="warning"
                 onClick={() => resetCurrentRecipe()}
                 onKeyPress={() => resetCurrentRecipe()}
                 tabIndex="0"
