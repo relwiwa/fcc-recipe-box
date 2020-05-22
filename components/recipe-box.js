@@ -1,6 +1,6 @@
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
-import uuidv1 from 'uuid/v1';
+import { v1 as uuidv1 } from 'uuid';
 
 import { startupRecipes } from '../specs/startup-recipes';
 import { localStorageStoredRecipes, modes, recipeCategories, recipeProperties } from '../specs/words';
